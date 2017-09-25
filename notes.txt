@@ -1,0 +1,5 @@
+*** NOTES ***
+
+* Update the schedule yearly with update_sched.py found in nflgame directory
+
+python update_sched.py --year 2017
