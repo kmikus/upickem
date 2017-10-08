@@ -6,7 +6,7 @@ def pull_games(year, week):
 	games_list = list()
 	for game in games:
 		date = {"year": game.schedule['year'], "month": game.schedule['month'], "day": game.schedule['day'], "weekday": game.schedule['wday']}
-		games_list.append({"season": year, "week": week, "hometeam": game.home, "homescore": game.score_home, "awayteam": game.away, "awayscore": game.score_away, "date": date})
+		games_list.append({"season": year, "week": week, "hometeam": game.home, "homescore": game.score_home, "awayteam": game.away, "awayscore": game.score_away, "date": date, "gameid": game.gamekey})
 	return games_list
 
 # TODO input validation to make sure week and year are same for all

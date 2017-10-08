@@ -1,4 +1,5 @@
-<?php require "../conn/db_conn.php" ?>
+<?php require "..includes/conn/db_conn.php" ?>
+<?php $conn = dbconn(); ?>
 <!DOCTYPE html>
 <html>
   <head>
