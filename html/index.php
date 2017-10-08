@@ -1,3 +1,4 @@
+<?php require "../conn/db_conn.php" ?>
 <!DOCTYPE html>
 <html>
   <head>
