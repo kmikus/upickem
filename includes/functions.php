@@ -11,4 +11,11 @@
 		$json = json_decode(file_get_contents($filepath), true);
 		return $json;
 	}
+
+	function prepDate($year, $month, $day) {
+		$year = strval($year);
+		$month = strlen(strval($month)) === 1 ? "0" . strval($month) : strval($month);
+		$day = strlen(strval($day)) === 1 ? "0" . strval($day) : strval($day);
+		return ($year . "-" . $month . "-" . $day);
+	}
 ?>
