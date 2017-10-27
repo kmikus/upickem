@@ -7,14 +7,16 @@ class Gamedata:
 		self.path = path
 
 	def getPath(self):
-		return path
+		return self.path
 
 	def setPath(self, path):
 		self.path = path
 
-	def getLastComplete(self):
-	# TODO 
-
-class Gamewriter:
-
-	#TODO
+# TODO determine what data is missing from season files
+	# def getLastComplete(self, season):
+	# 	with open(str(season.year)+'.json', 'r'):
+		
+# TODO
+# class Gamewriter:
+	
+	# 	def __init__(self, season):
