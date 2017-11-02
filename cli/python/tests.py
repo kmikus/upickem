@@ -1,4 +1,7 @@
-import week, season, game, cache
+import nflwrapper cache, unittest
+
+class NflgameTest(unittest.TestCase):
+    # Write these unit tests
 
 myseason = season.Season()
 print('Made a season')
