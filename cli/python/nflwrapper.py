@@ -9,13 +9,23 @@ class Season:
 	# TODO force use a date object for first_game_date
 	def __init__(self, year=default_year):
 		self.year = year
-
+		
+	def getSchedule(self):
+		schedule = []
+		for weeknum in range(1, 18):
+			schedule.append(nflgame.update_sched.week_schedule(self.year, 'REG', weeknum))
+		return schedule
+		
 # class CurrSeason(Season):
 
 	# TODO
 	
+# class PostSeason(Season):
+
+	# TODO
+	
 class Week:
-	# Inherit this class for postseason
+	
 	default_season = Season()
 
 	def __init__(self, week_num, season=default_season):
@@ -24,10 +34,21 @@ class Week:
 		self.year = season.year
 
 	def getSchedule(self):
-		# Note that this list is ordered by time
-		return nflgame.update_sched.week_schedule(self.year, 'REG', self.week_num)
+		# note that this list is ordered by time
+		return self.season.getSchedule()[self.week_num-1]
+		
+	def getHometeams(self):
+		for game in self.getSchedule():
+			return list().append(game['home'])
+
+# class PostWeek(Week):
+	
+	# TODO
 		
 class Game:
+	
+	# TODO change constructor to take home or away team
+	# TODO use other seasons other than the current
 	
 	def __init__(self, week, hometeam):
 		self.week = week.week_num
