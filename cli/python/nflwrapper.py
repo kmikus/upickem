@@ -1,3 +1,5 @@
+# Most of the logic centers around the home team, home teams always come first or are used as inputs
+
 import nflgame, nflgame.update_sched, datetime
 
 today = datetime.date.today()
@@ -13,7 +15,7 @@ class Season:
 	def getSchedule(self):
 		schedule = []
 		for weeknum in range(1, 18):
-			schedule.append(nflgame.update_sched.week_schedule(self.year, 'REG', weeknum))
+			schedule.append(nflgame.update_sched.week_schedule(self.year, "REG", weeknum))
 		return schedule
 		
 # class CurrSeason(Season):
@@ -33,13 +35,24 @@ class Week:
 		self.week_num = week_num
 		self.year = season.year
 
+	# note that this list is ordered by time
 	def getSchedule(self):
-		# note that this list is ordered by time
 		return self.season.getSchedule()[self.week_num-1]
-		
-	def getHometeams(self):
+	
+	# return an array of tuples with the hometeam first
+	def getMatchups(self):
+		games = []
 		for game in self.getSchedule():
-			return list().append(game['home'])
+			games.append((game["home"], game["away"]))
+		return games
+
+	def getHometeams(self):
+		hometeams = [game[0] for game in self.getMatchups()]
+		return hometeams
+
+	def getAwayteams(self):
+		awayteams = [game[0] for game in self.getMatchups()]
+		return awayteams
 
 # class PostWeek(Week):
 	
@@ -57,7 +70,7 @@ class Game:
 		
 	def getSchedule(self):
 		for i, game in enumerate(self.week.getSchedule()):
-			if game['home'] == self.hometeam:
+			if game["home"] == self.hometeam:
 				return self.week.getSchedule()[i]
 			else:
 				return None
@@ -87,5 +100,5 @@ class Game:
 			return self.getNflgameObj().score_away
 	
 	def getAwayTeam(self):
-		return self.getSchedule()['away']
+		return self.getSchedule()["away"]
 
