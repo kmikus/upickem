@@ -1,23 +1,18 @@
-import nflwrapper cache, unittest
+import nflwrapper, cache, unittest
 
-class NflgameTest(unittest.TestCase):
-    def setUp(self):
-        self.test_season = Season()
-        self.test_week = Week(8)
-        self.test_game = Game(self.test_week, 'BAL')
-        
-    def
-    
-# myseason = season.Season()
-# print('Made a season')
-# print myseason.year
+class Nflwrappertest(unittest.TestCase):
+	def test_teams(self):
+		self.assertTrue("PIT" in nflwrapper.teams)
+		self.assertTrue("LAR" in nflwrapper.teams)
 
-# myweek = week.Week(8)
-# print myweek.getSchedule()
+# class Gametest(unittest.TestCase):
+#    def setUp(self):
+#		self.testweek1 = nflwrapper.Week(1)
+#		self.testweek2 = nflwrapper.Week(7)
+#		self.testweek3 = nflwrapper.Week(17)
+#        self.test_game1 = Game(self.test_week, 'BAL')
+#        
+#    def tearDown(
 
-# # get all hometeams for the week to get all scores for the week
-# fingame = game.Game(myweek, 'BAL')
-# unfingame = game.Game(myweek, 'DET')
-
-# print fingame.isComplete()
-# print unfingame.isComplete()
+if __name__ == "__main__":
+	unittest.main()

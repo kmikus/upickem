@@ -3,6 +3,7 @@
 import nflgame, nflgame.update_sched, datetime
 
 today = datetime.date.today()
+# TODO list of teams
 
 class Season:
 
