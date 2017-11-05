@@ -19,7 +19,7 @@ class Gamedata:
 	def setPath(self, path):
 		self.path = path
 
-	def doesGamedataFileExist(self, fname=self.fname):
+	def doesGamedataFileExist(self):
 		return os.path.isfile(self.fullpath)
 
 # TODO determine what data is missing from season files

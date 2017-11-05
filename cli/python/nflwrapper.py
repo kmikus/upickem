@@ -3,8 +3,7 @@
 import nflgame, nflgame.update_sched, datetime
 
 today = datetime.date.today()
-# TODO list of teams
-
+teams = ("ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","GB","HOU","IND","JAX","KC","LAC","LAR","MIA","MIN","NE","NO","NYG","NYJ","OAK","PHI","PIT","SEA","SF","TB","TEN","WAS")
 class Season:
 
 	default_year = today.year if today.month > 2 else today.year-1
@@ -52,7 +51,7 @@ class Week:
 		return hometeams
 
 	def getAwayteams(self):
-		awayteams = [game[0] for game in self.getMatchups()]
+		awayteams = [game[1] for game in self.getMatchups()]
 		return awayteams
 
 # class PostWeek(Week):
