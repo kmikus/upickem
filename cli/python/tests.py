@@ -11,9 +11,9 @@ class NflwrapperTest(unittest.TestCase):
 	def setUp(self):
 		self.season = nflwrapper.Season()
 		self.week1 = nflwrapper.Week(1)
-		self.week9 = nflwrapper.Week(8)
-		self.week17 = nflwrapper.Week(17)
-		self.testweeks = [self.week1, self.week17]
+		self.week2 = nflwrapper.Week(9)
+		self.week3 = nflwrapper.Week(17)
+		self.testweeks = [self.week1, self.week2 self.week3]
 
 	def tearDown(self):
 		self.season = None
@@ -45,6 +45,8 @@ class NflwrapperTest(unittest.TestCase):
 		for week in self.testweeks: self.assertNotIn(week.getAwayteams()[0], week.getHometeams())
 
 	# game class
+	# def test_getGameSchedule():
+		# TODO
 	
 
 #class Gametest(unittest.TestCase):

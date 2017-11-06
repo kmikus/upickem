@@ -62,18 +62,20 @@ class Game:
 	
 	# TODO change constructor to take home or away team
 	# TODO use other seasons other than the current
+	# TODO default week is current week
 	
 	def __init__(self, week, hometeam):
+		# yeah I poorly named week
 		self.week = week.week_num
+		self.weekObj = week
 		self.hometeam = hometeam
 		self.year = week.year
 		
 	def getSchedule(self):
-		for i, game in enumerate(self.week.getSchedule()):
+		for game in self.weekObj.getSchedule():
 			if game["home"] == self.hometeam:
-				return self.week.getSchedule()[i]
-			else:
-				return None
+				return game
+		return None
 	
 	# empty array for false, 1 game object for true
 	def hasData(self):
@@ -88,17 +90,23 @@ class Game:
 		return not game.togo if game else None
 		
 	def getHomeScore(self):
-		if not self.isComplete():
+		if not self.hasData():
 			return None
 		else:
 			return self.getNflgameObj().score_home
 			
 	def getAwayScore(self):
-		if not self.isComplete():
+		if not self.hasData():
 			return None
 		else:
 			return self.getNflgameObj().score_away
 	
 	def getAwayTeam(self):
 		return self.getSchedule()["away"]
+
+	def isHomeWinner(self):
+		if self.isComplete():
+			return self.getHomeScore() > self.getAwayScore()
+		else:
+			return None
 
