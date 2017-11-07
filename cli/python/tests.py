@@ -1,9 +1,12 @@
-import nflwrapper, cache, unittest
+import nflwrapper, cache, unittest, random
 
 num_of_weeks = 17
 num_of_teams = 32
+# use a home team on first game for test team, preferably first game of season
+test_team = "NE"
 
 # TODO use test suites or break up into different classes for more organization
+# TODO Game class uses hometeams as a constructor. theres probably a better way
 
 class NflwrapperTest(unittest.TestCase):
 	
@@ -13,7 +16,8 @@ class NflwrapperTest(unittest.TestCase):
 		self.week1 = nflwrapper.Week(1)
 		self.week2 = nflwrapper.Week(9)
 		self.week3 = nflwrapper.Week(17)
-		self.testweeks = [self.week1, self.week2 self.week3]
+		self.testweeks = [self.week1, self.week2, self.week3]
+		self.game = nflwrapper.Game(self.week1, test_team)
 
 	def tearDown(self):
 		self.season = None
@@ -45,18 +49,38 @@ class NflwrapperTest(unittest.TestCase):
 		for week in self.testweeks: self.assertNotIn(week.getAwayteams()[0], week.getHometeams())
 
 	# game class
-	# def test_getGameSchedule():
+
+	# gets a random hometeam for the test weeks
+	def test_getGameSchedule(self):
+		for week in self.testweeks:
+			testgame = nflwrapper.Game(week, week.getHometeams()[random.randint(0, len(week.getHometeams())-1)])
+			self.assertIs(type(testgame.getSchedule()), dict)
+
+	def test_hasData(self):
+		self.assertIsNotNone(self.game.hasData())
+
+	def test_getNflGameObj(self):
+		self.assertIsNotNone(self.game.getNflgameObj())
+
+	def test_isComplete(self):
+		self.assertTrue(self.game.isComplete())
+
+	def test_getHomeScore(self):
+		self.assertIs(type(self.game.getHomeScore()), int)
+
+	def test_getAwayScore(self):
+		self.assertIs(type(self.game.getAwayScore()), int)
+
+	def test_getAwayTeam(self):
+		self.assertIs(type(self.game.getAwayTeam()), unicode)
+
+	def isHomeWinner(self):
+		self.assertIs(type(self.game.isHomeWinner()), bool)
+
+class CacheTest(unittest.TestCase):
+
+	def setUp(self):
 		# TODO
 	
-
-#class Gametest(unittest.TestCase):
-#   def setUp(self):
-#   	self.testweek1 = nflwrapper.Week(1)
-#   	self.testweek2 = nflwrapper.Week(7)
-#   	self.testweek3 = nflwrapper.Week(17)
-#       self.test_game1 = Game(self.test_week, 'BAL')
-#       
-#   def tearDown(
-#
 if __name__ == "__main__":
 	unittest.main()
