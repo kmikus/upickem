@@ -22,11 +22,16 @@ class Gamedata:
 	def doesGamedataFileExist(self):
 		return os.path.isfile(self.fullpath)
 
-# TODO determine what data is missing from season files
-	# def getLastComplete(self, season):
-	# 	with open(str(season.year)+'.json', 'r'):
-		
-# TODO
-# class Gamewriter:
+	#TODO def getLastCompleteWeek(self):
+
+class Gamewriter:
 	
-	# 	def __init__(self, season):
+	def __init__(self, season):
+		self.season = nflwrapper.Season(season)
+
+#	def prepareJsonDict(self):
+#		final_week = self.season.getCurrentWeek()
+#		if final_week not in range(1, nflwrapper.num_of_weeks): raise ValueError("The week is not in the specified range, see Season.getCurrentWeek")
+#		for i in range(1, final_week+1):
+			
+				

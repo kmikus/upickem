@@ -4,6 +4,9 @@ import nflgame, nflgame.update_sched, datetime
 
 today = datetime.date.today()
 teams = ("ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","GB","HOU","IND","JAX","KC","LAC","LAR","MIA","MIN","NE","NO","NYG","NYJ","OAK","PHI","PIT","SEA","SF","TB","TEN","WAS")
+num_of_teams = len(teams)
+num_of_weeks = 17
+
 class Season:
 
 	default_year = today.year if today.month > 2 else today.year-1
@@ -17,6 +20,18 @@ class Season:
 		for weeknum in range(1, 18):
 			schedule.append(nflgame.update_sched.week_schedule(self.year, "REG", weeknum))
 		return schedule
+
+	def getCurrentWeek(self):
+		schedule = self.getSchedule()
+		current_week = None
+		for week in schedule:
+			first_game = week[0]
+			week = first_game["week"]
+			year, month, day = first_game["year"], first_game["month"], first_game["day"]
+			if datetime.date(year, month, day) > today:
+				current_week = week
+				break
+		return current_week
 		
 # class CurrSeason(Season):
 

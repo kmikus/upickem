@@ -1,7 +1,7 @@
 import nflwrapper, cache, unittest, random
 
-num_of_weeks = 17
-num_of_teams = 32
+num_of_weeks = nflwrapper.num_of_weeks
+num_of_teams = nflwrapper.num_of_teams
 # use a home team on first game for test team, preferably first game of season
 test_team = "NE"
 
@@ -32,6 +32,9 @@ class NflwrapperTest(unittest.TestCase):
 
 	def test_getSeasonSchedule(self):
 		self.assertEqual(len(self.season.getSchedule()), num_of_weeks)
+
+	def test_getCurrentWeek(self):
+		self.assertIs(type(self.season.getCurrentWeek()), int)
 
 	# week class
 	def test_getWeekSchedule(self):
@@ -77,10 +80,10 @@ class NflwrapperTest(unittest.TestCase):
 	def isHomeWinner(self):
 		self.assertIs(type(self.game.isHomeWinner()), bool)
 
-class CacheTest(unittest.TestCase):
-
-	def setUp(self):
-		# TODO
+#class CacheTest(unittest.TestCase):
+#
+#	def setUp(self):
+#		# TODO
 	
 if __name__ == "__main__":
 	unittest.main()
