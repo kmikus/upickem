@@ -77,8 +77,11 @@ class NflwrapperTest(unittest.TestCase):
 	def test_getAwayTeam(self):
 		self.assertIs(type(self.game.getAwayTeam()), unicode)
 
-	def isHomeWinner(self):
+	def test_isHomeWinner(self):
 		self.assertIs(type(self.game.isHomeWinner()), bool)
+
+	def test_getGameId(self):
+		self.assertIsNot(self.game.getSchedule(), None)
 
 #class CacheTest(unittest.TestCase):
 #

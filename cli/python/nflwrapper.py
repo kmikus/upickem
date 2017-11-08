@@ -29,8 +29,8 @@ class Season:
 			week = first_game["week"]
 			year, month, day = first_game["year"], first_game["month"], first_game["day"]
 			if datetime.date(year, month, day) > today:
-				current_week = week
 				break
+			current_week = week
 		return current_week
 		
 # class CurrSeason(Season):
@@ -77,9 +77,11 @@ class Game:
 	
 	# TODO change constructor to take home or away team
 	# TODO use other seasons other than the current
-	# TODO default week is current week
+
+	default_week_int = Season().getCurrentWeek()
+	default_week = Week(default_week_int)
 	
-	def __init__(self, week, hometeam):
+	def __init__(self, hometeam, week=default_week):
 		# yeah I poorly named week
 		self.week = week.week_num
 		self.weekObj = week
@@ -124,4 +126,7 @@ class Game:
 			return self.getHomeScore() > self.getAwayScore()
 		else:
 			return None
+
+	def getGameId(self):
+		return self.getSchedule()['gamekey']
 

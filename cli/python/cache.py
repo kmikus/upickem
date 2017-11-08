@@ -1,6 +1,6 @@
 # Store information regarding path values for gamedata json
 
-import os.path, nflwrapper
+import os.path, nflwrapper, datetime
 
 class Gamedata:
 
@@ -29,9 +29,20 @@ class Gamewriter:
 	def __init__(self, season):
 		self.season = nflwrapper.Season(season)
 
+	def getGameDict(self, game):
+		sch = game.getSchedule()
+		# using the nflgame api for the id here, could change in the future to use own
+		gameid = int(sch["gamekey"])
+		hometeam, homescore = game.hometeam, game.getHomeScore()
+		awayteam, awayscore = game.getAwayTeam(), game.getAwayScore()
+		gamedate = datetime.date(sch["year"], sch["month"], sch["day"])
+		gameDict ={"gameid": gameid, "hometeam": hometeam, "homescore": homescore, "awayteam": awayteam, "awayscore": awayscore, "gamedate": gamedate}
+		return gameDict
+
 #	def prepareJsonDict(self):
 #		final_week = self.season.getCurrentWeek()
 #		if final_week not in range(1, nflwrapper.num_of_weeks): raise ValueError("The week is not in the specified range, see Season.getCurrentWeek")
 #		for i in range(1, final_week+1):
+			
 			
 				
