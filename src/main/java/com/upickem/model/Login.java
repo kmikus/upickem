@@ -1,8 +1,7 @@
 package com.upickem.model;
 
-import org.hibernate.annotations.GeneratorType;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Login {

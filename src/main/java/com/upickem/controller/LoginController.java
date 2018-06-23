@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.upickem.model.Login;
 import com.upickem.repository.LoginRepository;
+import com.upickem.service.LoginService;
+import com.upickem.service.LoginServiceImpl;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
 public class LoginController {
 
     @Autowired
-    private LoginRepository loginRepository;
+    private LoginServiceImpl loginService;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     ResponseEntity<HashMap<String, Boolean>> login(@RequestBody Login loginInfo) {
-        Login resultFromDb = loginRepository.findOne(loginInfo.getUsername());
-        Boolean authenticated = false;
-        if (resultFromDb != null || loginInfo.getPassword().equals(resultFromDb.getPassword())) {
-        	authenticated = true;
-        }
+
+        Boolean authenticated = loginService.login(loginInfo);
+
         HashMap<String, Boolean> authPair = new HashMap<String, Boolean>();
         authPair.put("authenticated", authenticated);
         return new ResponseEntity<HashMap<String,Boolean>>(authPair, HttpStatus.OK);
