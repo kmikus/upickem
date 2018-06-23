@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <title>uPickEm</title>
 </head>
-<body>
+<body ng-app="upickem">
+<div ng-controller="ctrl">
     <p>Welcome to uPickEm!</p>
 
-    <form action="/api/v1/login" method="post">
-        <label>Username: </label><input name="username" type="text"/>
-        <label>Password: </label><input name="password" type="text"/>
-        <input type="submit"/>
+    <form>
+        <label>Username: </label><input ng-model="username" name="username" type="text"/>
+        <label>Password: </label><input ng-model="password" name="password" type="text"/>
+        <button ng-click="login()">Login</button>
     </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="js/main.js"></script>
+</div>
 </body>
 </html>

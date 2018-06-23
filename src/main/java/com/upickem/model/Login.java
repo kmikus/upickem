@@ -8,8 +8,6 @@ import javax.persistence.*;
 public class Login {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long loginId;
     String username;
     String password;
 
@@ -18,17 +16,8 @@ public class Login {
     }
 
     public Login(Long loginId, String username, String password) {
-        this.loginId = loginId;
         this.username = username;
         this.password = password;
-    }
-
-    public Long getLoginId() {
-        return loginId;
-    }
-
-    public void setLoginId(Long loginId) {
-        this.loginId = loginId;
     }
 
     public String getUsername() {
