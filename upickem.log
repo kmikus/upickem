@@ -2332,3 +2332,470 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/kevin
 2018-06-24 17:47:55.231  INFO 3515 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 17:47:48 EDT 2018]; root of context hierarchy
 2018-06-24 17:47:55.232  INFO 3515 --- [Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
 2018-06-24 17:47:55.234  INFO 3515 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:38:03.050  INFO 5879 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 5879 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:38:03.051  INFO 5879 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:38:03.069  INFO 5879 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:38:03 EDT 2018]; root of context hierarchy
+2018-06-24 18:38:03.879  INFO 5879 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d6fc088c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:38:04.209  INFO 5879 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:38:04.233  INFO 5879 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:38:04.233  INFO 5879 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:38:04.328  INFO 5879 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:38:04.328  INFO 5879 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1262 ms
+2018-06-24 18:38:04.459  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:38:04.461  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:38:04.463  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:38:04.463  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:38:04.464  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:38:04.464  INFO 5879 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:38:04.826  INFO 5879 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:38:04.840  INFO 5879 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 13 ms.
+2018-06-24 18:38:04.842  INFO 5879 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:38:04.843  INFO 5879 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:38:04.922  INFO 5879 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:38:04.940  INFO 5879 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:38:05.002  INFO 5879 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:38:05.004  INFO 5879 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:38:05.005  INFO 5879 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:38:05.037  INFO 5879 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:38:05.129  INFO 5879 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:38:05.311  WARN 5879 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:38:05.506  INFO 5879 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:38:05.942  INFO 5879 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:38:03 EDT 2018]; root of context hierarchy
+2018-06-24 18:38:06.005  INFO 5879 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:38:06.006  INFO 5879 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:38:06.008  INFO 5879 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:38:06.008  INFO 5879 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:38:06.038  INFO 5879 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:38:06.038  INFO 5879 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:38:06.083  INFO 5879 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:38:06.101  INFO 5879 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:38:06.278  INFO 5879 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 55976 (http)
+2018-06-24 18:38:06.282  INFO 5879 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.456 seconds (JVM running for 4.245)
+2018-06-24 18:38:06.325  INFO 5879 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:38:06.328  INFO 5879 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:38:06.329  INFO 5879 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:38:06.329  INFO 5879 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:38:06.332  INFO 5879 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:38:06.336  INFO 5879 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:38:06.339  INFO 5879 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@31228d83, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@22b82ddf, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@28bf82d9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@44ccd75c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@61a704d3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2120bed, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@566fe83c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@743bb39a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2de3b052, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3f3c8b60, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@16bbaab3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f357c9d]
+2018-06-24 18:38:06.459  INFO 5879 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:38:06.459  INFO 5879 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:38:06.477  INFO 5879 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2018-06-24 18:38:06.526  INFO 5879 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:38:06.572  INFO 5879 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:38:03 EDT 2018]; root of context hierarchy
+2018-06-24 18:38:06.574  INFO 5879 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:39:45.710  INFO 5886 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 5886 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:39:45.711  INFO 5886 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:39:45.730  INFO 5886 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:39:45 EDT 2018]; root of context hierarchy
+2018-06-24 18:39:46.538  INFO 5886 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e056b3da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:39:46.870  INFO 5886 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:39:46.895  INFO 5886 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:39:46.895  INFO 5886 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:39:46.991  INFO 5886 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:39:46.991  INFO 5886 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1264 ms
+2018-06-24 18:39:47.119  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:39:47.120  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:39:47.122  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:39:47.122  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:39:47.123  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:39:47.123  INFO 5886 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:39:47.511  INFO 5886 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:39:47.525  INFO 5886 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 14 ms.
+2018-06-24 18:39:47.527  INFO 5886 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:39:47.529  INFO 5886 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:39:47.634  INFO 5886 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:39:47.657  INFO 5886 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:39:47.718  INFO 5886 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:39:47.720  INFO 5886 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:39:47.721  INFO 5886 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:39:47.754  INFO 5886 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:39:47.848  INFO 5886 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:39:48.025  WARN 5886 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:39:48.224  INFO 5886 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:39:48.668  INFO 5886 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:39:45 EDT 2018]; root of context hierarchy
+2018-06-24 18:39:48.728  INFO 5886 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:39:48.730  INFO 5886 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:39:48.731  INFO 5886 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:39:48.732  INFO 5886 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:39:48.755  INFO 5886 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:39:48.755  INFO 5886 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:39:48.783  INFO 5886 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:39:48.801  INFO 5886 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:39:48.988  INFO 5886 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 55983 (http)
+2018-06-24 18:39:48.993  INFO 5886 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.504 seconds (JVM running for 4.288)
+2018-06-24 18:39:49.034  INFO 5886 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:39:49.037  INFO 5886 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:39:49.038  INFO 5886 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:39:49.038  INFO 5886 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:39:49.041  INFO 5886 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:39:49.043  INFO 5886 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:39:49.046  INFO 5886 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@44ccd75c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@61a704d3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2120bed, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@566fe83c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@743bb39a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2de3b052, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3f3c8b60, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@16bbaab3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3f357c9d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@fe42a09, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5458c71e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1ffd0114]
+2018-06-24 18:39:49.202  INFO 5886 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:39:49.202  INFO 5886 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:39:49.217  INFO 5886 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2018-06-24 18:39:49.266  INFO 5886 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:39:49.297  INFO 5886 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:39:45 EDT 2018]; root of context hierarchy
+2018-06-24 18:39:49.299  INFO 5886 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:40:47.438  INFO 5921 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 5921 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:40:47.439  INFO 5921 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:40:47.456  INFO 5921 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:40:47 EDT 2018]; root of context hierarchy
+2018-06-24 18:40:48.288  INFO 5921 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$271b29a4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:40:48.647  INFO 5921 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:40:48.674  INFO 5921 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:40:48.675  INFO 5921 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:40:48.773  INFO 5921 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:40:48.773  INFO 5921 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1319 ms
+2018-06-24 18:40:48.901  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:40:48.903  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:40:48.905  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:40:48.905  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:40:48.905  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:40:48.906  INFO 5921 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:40:49.250  INFO 5921 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:40:49.265  INFO 5921 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 14 ms.
+2018-06-24 18:40:49.267  INFO 5921 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:40:49.268  INFO 5921 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:40:49.472  INFO 5921 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:40:49.489  INFO 5921 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:40:49.546  INFO 5921 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:40:49.548  INFO 5921 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:40:49.549  INFO 5921 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:40:49.580  INFO 5921 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:40:49.667  INFO 5921 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:40:49.840  WARN 5921 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:40:50.021  INFO 5921 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:40:50.445  INFO 5921 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:40:47 EDT 2018]; root of context hierarchy
+2018-06-24 18:40:50.505  INFO 5921 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:40:50.506  INFO 5921 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:40:50.508  INFO 5921 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:40:50.508  INFO 5921 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:40:50.532  INFO 5921 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:40:50.532  INFO 5921 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:40:50.564  INFO 5921 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:40:50.583  INFO 5921 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:40:50.751  INFO 5921 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 55987 (http)
+2018-06-24 18:40:50.755  INFO 5921 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.53 seconds (JVM running for 4.28)
+2018-06-24 18:40:50.799  INFO 5921 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:40:50.803  INFO 5921 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:40:50.803  INFO 5921 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:40:50.804  INFO 5921 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:40:50.807  INFO 5921 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:40:50.810  INFO 5921 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:40:50.812  INFO 5921 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5458c71e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1ffd0114, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@b3857e2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@25a290ee, org.springframework.test.context.support.DirtiesContextTestExecutionListener@37d0d373, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4052913c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@99c4993, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@38089dae, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@9729a97, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5dfd31f4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@36463b09, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4adf3582]
+2018-06-24 18:40:50.934  INFO 5921 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:40:50.935  INFO 5921 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:40:50.951  INFO 5921 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2018-06-24 18:40:51.028  INFO 5921 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:40:51.058  INFO 5921 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:40:47 EDT 2018]; root of context hierarchy
+2018-06-24 18:40:51.060  INFO 5921 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:41:01.613  INFO 5939 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 5939 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:41:01.614  INFO 5939 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:41:01.632  INFO 5939 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:41:01 EDT 2018]; root of context hierarchy
+2018-06-24 18:41:02.408  INFO 5939 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$75782c8e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:41:02.774  INFO 5939 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:41:02.801  INFO 5939 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:41:02.801  INFO 5939 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:41:02.906  INFO 5939 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:41:02.906  INFO 5939 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1277 ms
+2018-06-24 18:41:03.013  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:41:03.014  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:41:03.016  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:41:03.017  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:41:03.017  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:41:03.017  INFO 5939 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:41:03.369  INFO 5939 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:41:03.382  INFO 5939 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 13 ms.
+2018-06-24 18:41:03.384  INFO 5939 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:41:03.386  INFO 5939 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 2 ms.
+2018-06-24 18:41:03.467  INFO 5939 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:41:03.482  INFO 5939 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:41:03.538  INFO 5939 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:41:03.540  INFO 5939 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:41:03.541  INFO 5939 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:41:03.572  INFO 5939 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:41:03.659  INFO 5939 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:41:03.828  WARN 5939 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:41:04.013  INFO 5939 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:41:04.467  INFO 5939 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:41:01 EDT 2018]; root of context hierarchy
+2018-06-24 18:41:04.540  INFO 5939 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:41:04.542  INFO 5939 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:41:04.544  INFO 5939 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:41:04.545  INFO 5939 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:41:04.574  INFO 5939 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:41:04.574  INFO 5939 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:41:04.612  INFO 5939 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:41:04.633  INFO 5939 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:41:04.834  INFO 5939 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 55991 (http)
+2018-06-24 18:41:04.839  INFO 5939 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.433 seconds (JVM running for 4.202)
+2018-06-24 18:41:04.903  INFO 5939 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:41:04.907  INFO 5939 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:41:04.907  INFO 5939 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:41:04.907  INFO 5939 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:41:04.910  INFO 5939 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:41:04.914  INFO 5939 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:41:04.915  INFO 5939 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2de3b052, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3f3c8b60, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@16bbaab3, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3f357c9d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@fe42a09, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5458c71e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1ffd0114, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@b3857e2, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@25a290ee, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@37d0d373, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4052913c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@99c4993]
+2018-06-24 18:41:05.037  INFO 5939 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:41:05.037  INFO 5939 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:41:05.053  INFO 5939 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2018-06-24 18:41:05.107  INFO 5939 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:41:05.139  INFO 5939 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:41:01 EDT 2018]; root of context hierarchy
+2018-06-24 18:41:05.142  INFO 5939 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:45:37.551  INFO 6000 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 6000 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:45:37.552  INFO 6000 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:45:37.570  INFO 6000 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:45:37 EDT 2018]; root of context hierarchy
+2018-06-24 18:45:38.360  INFO 6000 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d6fc088c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:45:38.717  INFO 6000 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:45:38.744  INFO 6000 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:45:38.744  INFO 6000 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:45:38.845  INFO 6000 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:45:38.846  INFO 6000 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1279 ms
+2018-06-24 18:45:38.959  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:45:38.961  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:45:38.963  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:45:38.963  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:45:38.963  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:45:38.964  INFO 6000 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:45:39.329  INFO 6000 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:45:39.343  INFO 6000 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 13 ms.
+2018-06-24 18:45:39.345  INFO 6000 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:45:39.346  INFO 6000 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:45:39.426  INFO 6000 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:45:39.443  INFO 6000 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:45:39.502  INFO 6000 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:45:39.503  INFO 6000 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:45:39.504  INFO 6000 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:45:39.535  INFO 6000 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:45:39.626  INFO 6000 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:45:39.796  WARN 6000 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:45:39.982  INFO 6000 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:45:40.444  INFO 6000 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:45:37 EDT 2018]; root of context hierarchy
+2018-06-24 18:45:40.511  INFO 6000 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:45:40.513  INFO 6000 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:45:40.514  INFO 6000 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:45:40.515  INFO 6000 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:45:40.544  INFO 6000 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:45:40.545  INFO 6000 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:45:40.585  INFO 6000 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:45:40.605  INFO 6000 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:45:40.824  INFO 6000 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 56021 (http)
+2018-06-24 18:45:40.828  INFO 6000 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.493 seconds (JVM running for 4.279)
+2018-06-24 18:45:40.870  INFO 6000 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:45:40.873  INFO 6000 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:45:40.874  INFO 6000 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:45:40.874  INFO 6000 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:45:40.878  INFO 6000 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:45:40.883  INFO 6000 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:45:40.885  INFO 6000 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@31228d83, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@22b82ddf, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@28bf82d9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@44ccd75c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@61a704d3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2120bed, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@566fe83c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@743bb39a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2de3b052, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3f3c8b60, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@16bbaab3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f357c9d]
+2018-06-24 18:45:41.007  INFO 6000 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:45:41.008  INFO 6000 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:45:41.022  INFO 6000 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 14 ms
+2018-06-24 18:45:41.076  INFO 6000 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:45:41.108  INFO 6000 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:45:37 EDT 2018]; root of context hierarchy
+2018-06-24 18:45:41.110  INFO 6000 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:52:38.657  INFO 6025 --- [main] com.upickem.LoginIntegrationTest         : Starting LoginIntegrationTest on Kevins-MBP.fios-router.home with PID 6025 (started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:52:38.658  INFO 6025 --- [main] com.upickem.LoginIntegrationTest         : No active profile set, falling back to default profiles: default
+2018-06-24 18:52:38.676  INFO 6025 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:52:38 EDT 2018]; root of context hierarchy
+2018-06-24 18:52:39.477  INFO 6025 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e056b3da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:52:39.846  INFO 6025 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2018-06-24 18:52:39.872  INFO 6025 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:52:39.872  INFO 6025 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:52:39.979  INFO 6025 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:52:39.979  INFO 6025 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1305 ms
+2018-06-24 18:52:40.093  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:52:40.095  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:52:40.097  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:52:40.097  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:52:40.097  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:52:40.098  INFO 6025 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:52:40.469  INFO 6025 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:52:40.483  INFO 6025 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 14 ms.
+2018-06-24 18:52:40.485  INFO 6025 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:52:40.486  INFO 6025 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:52:40.573  INFO 6025 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:52:40.593  INFO 6025 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:52:40.658  INFO 6025 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:52:40.660  INFO 6025 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:52:40.661  INFO 6025 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:52:40.695  INFO 6025 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:52:40.790  INFO 6025 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:52:40.968  WARN 6025 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:52:41.155  INFO 6025 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:52:41.610  INFO 6025 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:52:38 EDT 2018]; root of context hierarchy
+2018-06-24 18:52:41.680  INFO 6025 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:52:41.682  INFO 6025 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:52:41.684  INFO 6025 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:52:41.685  INFO 6025 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:52:41.714  INFO 6025 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:52:41.714  INFO 6025 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:52:41.749  INFO 6025 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:52:41.772  INFO 6025 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:52:41.989  INFO 6025 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 56084 (http)
+2018-06-24 18:52:41.994  INFO 6025 --- [main] com.upickem.LoginIntegrationTest         : Started LoginIntegrationTest in 3.568 seconds (JVM running for 4.371)
+2018-06-24 18:52:42.058  INFO 6025 --- [main] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:52:42.062  INFO 6025 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.upickem.LoginWebIntegrationTest], using SpringBootContextLoader
+2018-06-24 18:52:42.063  INFO 6025 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.upickem.LoginWebIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-24 18:52:42.063  INFO 6025 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.upickem.LoginWebIntegrationTest]: LoginWebIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-24 18:52:42.067  INFO 6025 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.upickem.UpickemApplication for test class com.upickem.LoginWebIntegrationTest
+2018-06-24 18:52:42.069  INFO 6025 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-24 18:52:42.072  INFO 6025 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@44ccd75c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@61a704d3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2120bed, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@566fe83c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@743bb39a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2de3b052, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3f3c8b60, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@16bbaab3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3f357c9d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@fe42a09, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5458c71e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1ffd0114]
+2018-06-24 18:52:42.216  INFO 6025 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:52:42.217  INFO 6025 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:52:42.230  INFO 6025 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2018-06-24 18:52:42.278  INFO 6025 --- [http-nio-auto-1-exec-1] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:52:42.308  INFO 6025 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b34fff9: startup date [Sun Jun 24 18:52:38 EDT 2018]; root of context hierarchy
+2018-06-24 18:52:42.310  INFO 6025 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:07.372  INFO 6027 --- [main] com.upickem.UpickemApplication           : Starting UpickemApplication on Kevins-MBP.fios-router.home with PID 6027 (/Users/kevinmikus/upickem/target/classes started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:54:07.374  INFO 6027 --- [main] com.upickem.UpickemApplication           : No active profile set, falling back to default profiles: default
+2018-06-24 18:54:07.424  INFO 6027 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:07 EDT 2018]; root of context hierarchy
+2018-06-24 18:54:08.292  INFO 6027 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8430344b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:54:08.624  INFO 6027 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2018-06-24 18:54:08.654  INFO 6027 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:54:08.654  INFO 6027 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:54:08.779  INFO 6027 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:54:08.780  INFO 6027 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1359 ms
+2018-06-24 18:54:08.908  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:54:08.909  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:54:08.911  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:54:08.911  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:54:08.912  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:54:08.912  INFO 6027 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:54:09.236  INFO 6027 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:54:09.250  INFO 6027 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 13 ms.
+2018-06-24 18:54:09.252  INFO 6027 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:54:09.253  INFO 6027 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:54:09.338  INFO 6027 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:09.353  INFO 6027 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:54:09.415  INFO 6027 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:54:09.416  INFO 6027 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:54:09.417  INFO 6027 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:54:09.449  INFO 6027 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:54:09.595  INFO 6027 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:54:09.769  WARN 6027 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:54:09.964  INFO 6027 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:10.347  INFO 6027 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:07 EDT 2018]; root of context hierarchy
+2018-06-24 18:54:10.408  INFO 6027 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:54:10.410  INFO 6027 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:54:10.412  INFO 6027 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:54:10.412  INFO 6027 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:54:10.440  INFO 6027 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:10.440  INFO 6027 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:10.480  INFO 6027 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:10.499  INFO 6027 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:54:10.694  INFO 6027 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-06-24 18:54:10.724 ERROR 6027 --- [main] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-8080]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:265) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:208) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) [spring-context-4.3.17.RELEASE.jar:4.3.17.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.13.RELEASE.jar:1.5.13.RELEASE]
+	at com.upickem.UpickemApplication.main(UpickemApplication.java:10) [classes/:na]
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 13 common frames omitted
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_161]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_161]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_161]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_161]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_161]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1150) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	... 14 common frames omitted
+
+2018-06-24 18:54:10.727  INFO 6027 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-06-24 18:54:10.736  INFO 6027 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-06-24 18:54:10.740 ERROR 6027 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2018-06-24 18:54:10.740  INFO 6027 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:07 EDT 2018]; root of context hierarchy
+2018-06-24 18:54:10.741  INFO 6027 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-06-24 18:54:10.742  INFO 6027 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:21.018  INFO 6029 --- [main] com.upickem.UpickemApplication           : Starting UpickemApplication on Kevins-MBP.fios-router.home with PID 6029 (/Users/kevinmikus/upickem/target/classes started by kevinmikus in /Users/kevinmikus/upickem)
+2018-06-24 18:54:21.021  INFO 6029 --- [main] com.upickem.UpickemApplication           : No active profile set, falling back to default profiles: default
+2018-06-24 18:54:21.070  INFO 6029 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:21 EDT 2018]; root of context hierarchy
+2018-06-24 18:54:21.928  INFO 6029 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$59a1ce0c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-24 18:54:22.275  INFO 6029 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2018-06-24 18:54:22.302  INFO 6029 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-24 18:54:22.303  INFO 6029 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-24 18:54:22.426  INFO 6029 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-24 18:54:22.426  INFO 6029 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1359 ms
+2018-06-24 18:54:22.558  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-24 18:54:22.559  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2/*]
+2018-06-24 18:54:22.561  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-24 18:54:22.562  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-24 18:54:22.562  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-24 18:54:22.562  INFO 6029 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-24 18:54:22.887  INFO 6029 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql]
+2018-06-24 18:54:22.901  INFO 6029 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/schema.sql] in 14 ms.
+2018-06-24 18:54:22.903  INFO 6029 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql]
+2018-06-24 18:54:22.904  INFO 6029 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/Users/kevinmikus/upickem/target/classes/data.sql] in 1 ms.
+2018-06-24 18:54:22.978  INFO 6029 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:22.994  INFO 6029 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-06-24 18:54:23.059  INFO 6029 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-06-24 18:54:23.060  INFO 6029 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-06-24 18:54:23.061  INFO 6029 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-06-24 18:54:23.097  INFO 6029 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-06-24 18:54:23.244  INFO 6029 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-06-24 18:54:23.415  WARN 6029 --- [main] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : true.  Supported values include create, create-drop, update, and validate.  Ignoring
+2018-06-24 18:54:23.611  INFO 6029 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-06-24 18:54:23.994  INFO 6029 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:21 EDT 2018]; root of context hierarchy
+2018-06-24 18:54:24.063  INFO 6029 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto org.springframework.web.servlet.view.RedirectView com.upickem.controller.HomeController.redirectToIndex()
+2018-06-24 18:54:24.066  INFO 6029 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/login],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.util.HashMap<java.lang.String, java.lang.Boolean>> com.upickem.controller.LoginController.login(com.upickem.model.Login)
+2018-06-24 18:54:24.067  INFO 6029 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-24 18:54:24.068  INFO 6029 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-24 18:54:24.096  INFO 6029 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:24.097  INFO 6029 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:24.132  INFO 6029 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-24 18:54:24.151  INFO 6029 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-06-24 18:54:24.352  INFO 6029 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-06-24 18:54:24.393  INFO 6029 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2018-06-24 18:54:24.398  INFO 6029 --- [main] com.upickem.UpickemApplication           : Started UpickemApplication in 3.64 seconds (JVM running for 3.99)
+2018-06-24 18:54:43.463  INFO 6029 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-24 18:54:43.463  INFO 6029 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-24 18:54:43.477  INFO 6029 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2018-06-24 18:54:47.610  INFO 6029 --- [http-nio-8080-exec-7] com.upickem.service.LoginServiceImpl     : Authenticated user abc
+2018-06-24 18:55:10.634  INFO 6029 --- [Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75f9eccc: startup date [Sun Jun 24 18:54:21 EDT 2018]; root of context hierarchy
+2018-06-24 18:55:10.636  INFO 6029 --- [Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-06-24 18:55:10.638  INFO 6029 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
