@@ -19,8 +19,10 @@ public class LoginServiceImpl implements LoginService {
 
 	    Login resultFromDb = loginRepository.findOne(loginInfo.getUsername());
         if (resultFromDb != null || loginInfo.getPassword().equals(resultFromDb.getPassword())) {
+        	logger.info("Authenticated user " + loginInfo.getUsername());
         	return true;
         }
+        logger.warn("Invalid credentials for user " + loginInfo.getUsername());
 	    return false;
 	}
 }
