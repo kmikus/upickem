@@ -41,8 +41,6 @@ public class LoginWebIntegrationTest {
 				loginInfo, String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
-		System.out.println(response.getBody());
-		
 		ObjectMapper om = new ObjectMapper();
 		JsonNode jn = om.readTree(response.getBody().toString());
 		assertThat(jn.get("authenticated").asBoolean()).isTrue();
