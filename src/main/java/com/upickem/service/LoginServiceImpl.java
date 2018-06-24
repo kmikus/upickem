@@ -14,6 +14,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private LoginRepository loginRepository;
 	
+	@SuppressWarnings("null")
 	public boolean login(Login loginInfo) {
 		Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 

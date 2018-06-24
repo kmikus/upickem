@@ -3,7 +3,6 @@ package com.upickem;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
