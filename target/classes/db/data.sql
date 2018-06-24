@@ -1,1 +1,0 @@
-insert into login values('abc', '123');
