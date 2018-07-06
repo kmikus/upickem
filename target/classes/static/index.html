@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>uPickEm</title>
-</head>
 <body ng-app="upickem">
 <div ng-controller="ctrl">
-    <p>Welcome to uPickEm!</p>
 
-    <form>
-        <label>Username: </label><input ng-model="username" name="username" type="text"/>
-        <label>Password: </label><input ng-model="password" name="password" type="text"/>
-        <button ng-click="login()">Login</button>
-        <button ng-click="register()">Register</button>
-    </form>
-    
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome to uPickEm!</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+
+                <form>
+                    <div class="form-group">
+                        <label>Username: </label>
+                        <input class="form-control" ng-model="username" name="username" type="text"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password: </label>
+                        <input class="form-control" ng-model="password" name="password" type="text"/>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" ng-click="login()">Login</button>
+                        <button class="btn btn-primary btn-block" ng-click="register()">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </div>
 </body>

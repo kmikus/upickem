@@ -1,7 +1,3 @@
-/Users/kevinmikus/upickem/src/main/java/com/upickem/repository/LoginRepository.java
-/Users/kevinmikus/upickem/src/main/java/com/upickem/service/LoginService.java
-/Users/kevinmikus/upickem/src/main/java/com/upickem/controller/LoginController.java
-/Users/kevinmikus/upickem/src/main/java/com/upickem/model/Login.java
 /Users/kevinmikus/upickem/src/main/java/com/upickem/controller/HomeController.java
-/Users/kevinmikus/upickem/src/main/java/com/upickem/service/LoginServiceImpl.java
+/Users/kevinmikus/upickem/src/main/java/com/upickem/config/SpringSecurityConfig.java
 /Users/kevinmikus/upickem/src/main/java/com/upickem/UpickemApplication.java

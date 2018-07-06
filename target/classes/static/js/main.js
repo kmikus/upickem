@@ -13,6 +13,6 @@ main.controller('ctrl', function($scope, $http) {
 		};
 		
 		console.log(data);
-		$http.post('http://localhost:8080/api/v1/login', data);
+		$http.post('http://localhost:8080/api/auth/signin', data);
 	}
 })
