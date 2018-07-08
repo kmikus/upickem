@@ -59,8 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-//			.cors()
-//				.and()
+			.cors()
+				.and()
 			.csrf()
 				.disable()
 			.exceptionHandling()
@@ -76,11 +76,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.gif",
 						"/**/*.svg",
 						"/**/*.jpg",
-						"/**/*.html",
 						"/**/*.css",
 						"/**/*.js")
 				.permitAll()
-            .antMatchers("/h2/**", "/h2*", "/register.html")
+            .antMatchers("/h2/**", "/h2*", "/register.html", "/login.html")
                 .permitAll()
 			.antMatchers("/api/auth/**")
 				.permitAll()
@@ -90,6 +89,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
             .anyRequest()
                 .authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login.html")
+                .successForwardUrl("/home.html")
             .and()
                 .headers().frameOptions().disable(); //TODO Delete after finishing with h2
 
