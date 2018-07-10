@@ -1,0 +1,20 @@
+body {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #607D8B;
+}
+
+.btn-secondary {
+    color: #212121;
+}
+
+.btn-secondary:hover {
+    background-color: lightgray;
+}
+
+.jumbotron {
+    color: #616161;
+}
