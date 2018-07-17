@@ -19,14 +19,14 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.upickem.model.audit.DateAudit;
+import com.upickem.model.audit.TableAudit;
 
 @Entity
 @Table(name = "user", uniqueConstraints = {
 		@UniqueConstraint(columnNames = {"username"}),
 		@UniqueConstraint(columnNames = {"email"})
 })
-public class User extends DateAudit {
+public class User extends TableAudit {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +59,7 @@ public class User extends DateAudit {
 			joinColumns = @ JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+
 
 	public User(String firstName, String lastName, String username,
 				String email, String password) {

@@ -6,7 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-		value = {"createdAt", "updatedAt"},
+		value = {"createdAt", "updatedAt", "createdBy", "updatedBy"},
 		allowGetters = true
 )
-public abstract class DateAudit {
+public abstract class TableAudit {
 	
 	@CreatedDate
 	@Column(nullable = false, updatable = false)
@@ -27,6 +29,14 @@ public abstract class DateAudit {
 	@LastModifiedDate
 	@Column(nullable = false)
 	private Instant updatedAt;
+
+    @CreatedBy
+    @Column(updatable = false)
+    private String createdBy;
+
+    @LastModifiedBy
+    @Column()
+    private String updatedBy;
 
 	public Instant getCreatedAt() {
 		return createdAt;
@@ -43,5 +53,21 @@ public abstract class DateAudit {
 	public void setUpdatedAt(Instant updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 	
 }

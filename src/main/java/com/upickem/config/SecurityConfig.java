@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.css",
 						"/**/*.js")
 				.permitAll()
-            .antMatchers("/h2/**", "/h2*", "/register.html", "/login.html")
+            .antMatchers("/h2/**", "/h2*", "/register.html", "/login.html", "/api/league/create") //TODO disable this
                 .permitAll()
 			.antMatchers("/api/auth/**")
 				.permitAll()
