@@ -78,10 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.jpg",
 						"/**/*.css",
 						"/**/*.js")
-				.permitAll()
-            .antMatchers("/h2/**", "/h2*", "/register.html", "/login.html", "/api/league/create") //TODO disable this
                 .permitAll()
-			.antMatchers("/api/auth/**")
+			.antMatchers("/api/auth/**", "/api/auth/signin")
 				.permitAll()
 			.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                 .permitAll()
@@ -92,9 +90,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login.html")
-                .successForwardUrl("/home.html")
-            .and()
-                .headers().frameOptions().disable(); //TODO Delete after finishing with h2
+                .successForwardUrl("/home.html");
+
+        //TODO for testing only DELETE;
+		http.csrf().disable().authorizeRequests().anyRequest().permitAll().and()
+                .headers().frameOptions().disable();
 
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
