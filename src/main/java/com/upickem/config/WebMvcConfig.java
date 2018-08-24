@@ -11,4 +11,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**");
     }
+
+    //TODO Use Spring MVC to resolve the page names
 }

@@ -4,6 +4,7 @@ import com.upickem.model.audit.TableAudit;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,9 +24,14 @@ public class League extends TableAudit {
     @NotBlank
     private String suffix;
 
-    public League(String name, String suffix) {
+    @OneToOne
+    @NotNull
+    private User commissioner;
+
+    public League(String name, String suffix, User commissioner) {
         this.name = name;
         this.suffix = suffix;
+        this.commissioner = commissioner;
     }
 
     public League() {
@@ -53,5 +59,13 @@ public class League extends TableAudit {
 
     public void setSuffix(String suffix) {
         this.suffix = suffix;
+    }
+
+    public User getCommissioner() {
+        return commissioner;
+    }
+
+    public void setCommissioner(User commissioner) {
+        this.commissioner = commissioner;
     }
 }

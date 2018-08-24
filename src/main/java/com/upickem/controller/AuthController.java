@@ -11,6 +11,8 @@ import com.upickem.payload.SignUpRequest;
 import com.upickem.repository.RoleRepository;
 import com.upickem.repository.UserRepository;
 import com.upickem.security.JwtTokenProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,9 @@ import java.util.Collections;
 @RestController
 @RequestMapping("api/auth")
 public class AuthController {
+
+    Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     AuthenticationManager authenticationManager;
 

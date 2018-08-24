@@ -5,11 +5,12 @@ import com.upickem.model.audit.TableAudit;
 import javax.persistence.*;
 
 @Entity
-@Table(name="league_user_join")
-public class LeagueUser extends TableAudit {
+@Table(name="user_league_pick_join")
+public class IndividualPick extends TableAudit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long leagueUserId;
+    private Long gamePickId;
 
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -19,20 +20,25 @@ public class LeagueUser extends TableAudit {
     @JoinColumn(name="league_id")
     private League league;
 
-    public LeagueUser(User user, League league) {
+    @ManyToOne
+    @JoinColumn(name="pick_id")
+    private Pick pick;
+
+    public IndividualPick(User user, League league, Pick pick) {
         this.user = user;
         this.league = league;
+        this.pick = pick;
     }
 
-    public LeagueUser() {
+    public IndividualPick() {
     }
 
-    public Long getLeagueUserId() {
-        return leagueUserId;
+    public Long getGamePickId() {
+        return gamePickId;
     }
 
-    public void setLeagueUserId(Long leagueUserId) {
-        this.leagueUserId = leagueUserId;
+    public void setGamePickId(Long gamePickId) {
+        this.gamePickId = gamePickId;
     }
 
     public User getUser() {
@@ -49,5 +55,13 @@ public class LeagueUser extends TableAudit {
 
     public void setLeague(League league) {
         this.league = league;
+    }
+
+    public Pick getPick() {
+        return pick;
+    }
+
+    public void setPick(Pick pick) {
+        this.pick = pick;
     }
 }

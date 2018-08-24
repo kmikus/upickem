@@ -1,17 +1,18 @@
 package com.upickem.controller;
 
 import com.upickem.model.League;
-import com.upickem.model.LeagueUser;
+import com.upickem.model.LeagueMember;
 import com.upickem.model.User;
 import com.upickem.payload.LeagueRequest;
 import com.upickem.repository.LeagueRepository;
-import com.upickem.repository.LeagueUserRepository;
+import com.upickem.repository.LeagueMemberRepository;
 import com.upickem.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,7 +33,7 @@ public class LeagueController {
     UserRepository userRepository;
 
     @Autowired
-    LeagueUserRepository leagueUserRepository;
+    LeagueMemberRepository leagueMemberRepository;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllLeagues() {
@@ -51,16 +52,21 @@ public class LeagueController {
         }
         league.setSuffix(suffix);
 
-        log.info("random suffix for " + leagueRequest.getName() + " is " + suffix);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> user = userRepository.findByUsername(username);
+        league.setCommissioner(user.get());
 
         leagueRepository.saveAndFlush(league);
+        leagueMemberRepository.saveAndFlush(new LeagueMember(user.get(), league));
 
         log.info("League created for " + leagueRequest.getName());
+        log.info("random suffix for " + leagueRequest.getName() + " is " + suffix);
 
         return new ResponseEntity<>(true, HttpStatus.CREATED);
 
     }
 
+    // TODO only authorize the owner of the league
     @PostMapping("/{leagueId}/addUser/{userId}")
     public ResponseEntity<?> addUserToLeague(@PathVariable("leagueId") Long leagueId,
                                              @PathVariable("userId") Long userId) {
@@ -84,7 +90,7 @@ public class LeagueController {
         }
 
         // User is already member of league
-        if(leagueUserRepository.existsByUserAndLeague(user.get(), league.get())) {
+        if(leagueMemberRepository.existsByUserAndLeague(user.get(), league.get())) {
             responseMessage = "User: " + user.get().getUsername() + " is already a member of league id: " +
                     league.get().getId();
             log.info(responseMessage);
@@ -92,8 +98,8 @@ public class LeagueController {
         }
 
         // Success
-        LeagueUser leagueUser = new LeagueUser(user.get(), league.get());
-        leagueUserRepository.saveAndFlush(leagueUser);
+        LeagueMember leagueMember = new LeagueMember(user.get(), league.get());
+        leagueMemberRepository.saveAndFlush(leagueMember);
         responseMessage = "User: " + user.get().getUsername() + " added to league id: " +
                 league.get().getId();
         log.info(responseMessage);
