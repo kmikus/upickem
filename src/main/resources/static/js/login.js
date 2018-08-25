@@ -3,6 +3,7 @@
 app.controller('login', function($scope, $http, $window) {
     $scope.username;
     $scope.password;
+    $scope.badUsernamePasswordEntered = false;
 
     $scope.signin = function () {
         var signinPayload = {
@@ -11,7 +12,16 @@ app.controller('login', function($scope, $http, $window) {
         };
 
         $http.post('/api/auth/signin', signinPayload).then(
-            function (value) { console.log(value.status); }
+            function (response) {
+                if (response.status === 200) {
+                    $scope.badUsernamePasswordEntered = false;
+                    $window.location.href = 'home.html';
+                } else {
+                    // TODO intercept the 401 received to display error messages
+                    console.log('fired');
+                    $scope.badUsernamePasswordEntered = true;
+                }
+            }
         );
     };
 

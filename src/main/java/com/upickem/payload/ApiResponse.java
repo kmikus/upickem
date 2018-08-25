@@ -1,10 +1,10 @@
 package com.upickem.payload;
 
-public class ApiResponse {
+public class ApiResponse<T> {
     private Boolean success;
-    private String message;
+    private T message;
 
-    public ApiResponse(Boolean success, String message) {
+    public ApiResponse(Boolean success, T message) {
         this.success = success;
         this.message = message;
     }
@@ -17,11 +17,11 @@ public class ApiResponse {
         this.success = success;
     }
 
-    public String getMessage() {
+    public T getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(T message) {
         this.message = message;
     }
 }

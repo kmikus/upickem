@@ -3,9 +3,10 @@ package com.upickem.controller;
 import com.upickem.model.League;
 import com.upickem.model.LeagueMember;
 import com.upickem.model.User;
+import com.upickem.payload.ApiResponse;
 import com.upickem.payload.LeagueRequest;
-import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.LeagueMemberRepository;
+import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.Random;
 
@@ -37,7 +37,7 @@ public class LeagueController {
 
     @GetMapping("/")
     public ResponseEntity<?> getAllLeagues() {
-        return new ResponseEntity<>(leagueRepository.findAll(), HttpStatus.OK);
+        return ResponseEntity.ok(new ApiResponse<>(true, leagueRepository.findAll()));
     }
 
     @PostMapping("/create")
@@ -62,7 +62,7 @@ public class LeagueController {
         log.info("League created for " + leagueRequest.getName());
         log.info("random suffix for " + leagueRequest.getName() + " is " + suffix);
 
-        return new ResponseEntity<>(true, HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponse<>(true, "League created"), HttpStatus.CREATED);
 
     }
 
@@ -78,7 +78,7 @@ public class LeagueController {
         if(!user.isPresent()) {
             responseMessage = "User not found for user id: " + userId;
             log.info(responseMessage);
-            return new ResponseEntity<>(Collections.singletonMap("error", responseMessage), HttpStatus.OK);
+            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));
         }
 
         // Can't find league
@@ -86,16 +86,14 @@ public class LeagueController {
         if(!league.isPresent()) {
             responseMessage = "League not found for league id: " + leagueId;
             log.info(responseMessage);
-            return new ResponseEntity<>(Collections.singletonMap("error", responseMessage), HttpStatus.OK);
-        }
+            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));        }
 
         // User is already member of league
         if(leagueMemberRepository.existsByUserAndLeague(user.get(), league.get())) {
             responseMessage = "User: " + user.get().getUsername() + " is already a member of league id: " +
                     league.get().getId();
             log.info(responseMessage);
-            return new ResponseEntity<>(Collections.singletonMap("error", responseMessage), HttpStatus.OK);
-        }
+            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));        }
 
         // Success
         LeagueMember leagueMember = new LeagueMember(user.get(), league.get());
@@ -103,7 +101,6 @@ public class LeagueController {
         responseMessage = "User: " + user.get().getUsername() + " added to league id: " +
                 league.get().getId();
         log.info(responseMessage);
-        return new ResponseEntity<>(Collections.singletonMap("success", true), HttpStatus.OK);
-    }
+        return ResponseEntity.ok(new ApiResponse<>(true, responseMessage));    }
 
 }

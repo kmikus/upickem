@@ -17,7 +17,11 @@ app.controller('register', function($scope, $http, $window) {
         };
 
         $http.post('/api/auth/signup', signupPayload).then(
-            function (value) { console.log(value.status); }
+            function (response) {
+                if (response.data.success === true) {
+                    $window.location.href = 'login.html';
+                }
+            }
         );
     }
 
