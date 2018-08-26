@@ -75,6 +75,11 @@ public class GameServiceImpl implements GameService {
                 gt="SB"/> - Game Type: PRE, REG, WC (Wildcard), DIV (Divisional), CON (Conference), SB (You know)
             </gms>
         </ss>
+
+        // TODO
+        We can also get live data from
+        http://www.nfl.com/liveupdate/game-center/<eid>/<eid>_gtd.json
+        where eid is from the schedule above
          */
 
         List<Game> games = new ArrayList<>();
