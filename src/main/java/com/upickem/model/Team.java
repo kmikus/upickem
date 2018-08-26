@@ -18,7 +18,7 @@ public enum Team {
     JAX,
     KC,
     LAC,
-    LAR,
+    LA, //For whatever reason the Rams aren't LAR from the server we're using currently
     MIA,
     MIN,
     NE,

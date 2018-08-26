@@ -22,18 +22,11 @@ public class UserTrimmedResponse {
     @Size(max=20)
     private String username;
 
-    @NaturalId
-    @NotBlank
-    @Size(max=40)
-    @Email
-    private String email;
-
-    public UserTrimmedResponse(Long id, String firstName, String lastName, String username, String email) {
+    public UserTrimmedResponse(Long id, String firstName, String lastName, String username) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.email = email;
     }
 
     public UserTrimmedResponse() {
@@ -71,11 +64,4 @@ public class UserTrimmedResponse {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

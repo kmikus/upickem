@@ -2,6 +2,29 @@ body {
     background-color: #dbffdd;
 }
 
+.new-league {
+    margin-top: 5%;
+}
+
+.sidebar {
+    background-color: #767b85;
+    height: 100vh;
+    color: white;
+}
+
+.nav {
+    background-color: #00315f;
+}
+
+.navbar-brand {
+    color: yellow;
+    font-size: x-large;
+}
+
+.nav-link {
+    color: white;
+}
+
 .btn-primary {
     background-color: #607D8B;
 }

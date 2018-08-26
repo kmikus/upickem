@@ -9,11 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.upickem.model.audit.TableAudit;
 import org.hibernate.annotations.NaturalId;
+import sun.tools.jconsole.Tab;
 
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role extends TableAudit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

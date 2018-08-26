@@ -1,7 +1,6 @@
 package com.upickem.controller;
 
 import com.upickem.exception.BadRequestException;
-import com.upickem.model.League;
 import com.upickem.model.LeagueMember;
 import com.upickem.model.User;
 import com.upickem.payload.ApiResponse;
@@ -17,7 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,16 +56,15 @@ public class UserController {
         return ResponseEntity.ok(new ApiResponse<>(true, leagues));
     }
 
-    @GetMapping("/{emailOrUsername}")
-    public ResponseEntity<?> getUser(@PathVariable String emailOrUsername) {
+    @PostMapping("/getUserByEmailOrUsername")
+    public ResponseEntity<?> getUser(@RequestBody String emailOrUsername) {
 
         Optional<User> user = userRepository.findByUsernameOrEmail(emailOrUsername, emailOrUsername);
         if (!user.isPresent()) {
             return ResponseEntity.ok(new ApiResponse<>(false, "No user found"));
         } else {
             UserTrimmedResponse response = new UserTrimmedResponse(user.get().getId(),
-                    user.get().getFirstName(), user.get().getLastName(), user.get().getUsername(),
-                    user.get().getEmail());
+                    user.get().getFirstName(), user.get().getLastName(), user.get().getUsername());
             return ResponseEntity.ok(new ApiResponse<>(true, response));
         }
     }

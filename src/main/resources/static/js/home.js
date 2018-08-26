@@ -8,6 +8,11 @@ app.controller('home', function ($scope, $http, $window) {
         display: false
     };
 
+    $scope.success = {
+        message: '',
+        display: false
+    };
+
     $scope.userLeagues = [];
     $scope.selectedLeague;
 
@@ -15,9 +20,16 @@ app.controller('home', function ($scope, $http, $window) {
     $scope.selectedUsersInNewLeague = []
     $scope.addLeagueNameInput = '';
     $scope.addLeagueEmailOrUsernameInput = '';
+    $scope.maxMembersInLeague = 0;
 
-    $scope.refresh = function() {
+    $scope.refreshData = function() {
         $scope.getUserLeagues();
+        $scope.getMaxMembersInLeague();
+    }
+
+    $scope.removeAlerts = function() {
+        $scope.error.display = false;
+        $scope.success.display = false;
     }
 
     $scope.getUserLeagues = function() {
@@ -25,11 +37,19 @@ app.controller('home', function ($scope, $http, $window) {
             $scope.userLeagues = response.data.message;
         })
     };
+
+    $scope.getMaxMembersInLeague = function() {
+        $http.get("api/league/getMaxMembers").then(function(response) {
+            if (response.data.success) {
+                $scope.maxMembersInLeague = response.data.message;
+            }
+        })
+    }
     // END INITIALIZATION
 
     // BEGIN LEAGUE SELECTED
-    $scope.selectLeague = function(leagueId) {
-        $scope.selectedLeague = leagueId;
+    $scope.selectLeague = function(league) {
+        $scope.selectedLeague = league;
     }
     // END LEAGUE SELECTED
 
@@ -44,11 +64,11 @@ app.controller('home', function ($scope, $http, $window) {
             $scope.error.message = 'Enter a username or email to add';
             $scope.error.display = true;
         } else {
-            $http.get("api/user/" + $scope.addLeagueEmailOrUsernameInput).then(
+            $http.post("api/user/getUserByEmailOrUsername", $scope.addLeagueEmailOrUsernameInput).then(
                 function(response) {
                     // Server will return true or false
                     if (response.data.success) {
-                        $scope.selectedUsersInNewLeague.push(response.data.message)
+                        $scope.selectedUsersInNewLeague.push(response.data.message.username)
                     } else {
                         $scope.error.display = true;
                         $scope.error.message = 'User not found';
@@ -59,14 +79,37 @@ app.controller('home', function ($scope, $http, $window) {
     }
 
     $scope.createNewLeagueSubmit = function() {
-        //TODO
+        console.log($scope.selectedUsersInNewLeague);
+        let requestBody = {
+            name: $scope.addLeagueNameInput,
+            usernamesOrEmails: $scope.selectedUsersInNewLeague
+        };
+        $http.post("api/league/create", requestBody).then(
+            function(response) {
+                if (response.data.success) {
+                    $scope.success.message = "League created!"
+                    $scope.success.display = true;
+                    $scope.newLeagueClicked = false;
+                    $scope.refreshData();
+                }
+            }
+        )
     }
 
     $scope.cancelCreateNewLeague = function() {
-        //TODO
+        $scope.newLeagueClicked = false;
+        $scope.selectedUsersInNewLeague = [];
     }
     // END CREATING LEAGUES
 
-    $scope.refresh();
+    $scope.resetError = function() {
+        $scope.error.display = false;
+    }
+
+    $scope.resetSuccess = function() {
+        $scope.success.display = false;
+    }
+
+    $scope.refreshData();
 
 });

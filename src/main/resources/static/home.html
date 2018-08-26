@@ -7,13 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>uPickEm</title>
 <body ng-app="upickem">
-<div ng-controller="home">
+<div ng-controller="home" ng-click="resetError()">
 
-    <ul>
-        <li ng-click="selectLeague(league.leagueId)" ng-repeat="league in userLeagues">{{league.leagueName}}</li>
-    </ul>
+    <nav class="nav">
+        <a class="navbar-brand" href="home.html">uPickEm</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="schedule.html">Schedule</a>
+            </li>
+        </ul>
+    </nav>
 
-    <button ng-click="showNewLeagueArea()">Create new league</button>
+    <div class="sidebar col-sm-2">
+        <h2>My Leagues</h2>
+
+        <div class="list-group">
+            <a href="#"
+               ng-repeat="league in userLeagues"
+               ng-click="selectLeague(league)"
+               class="list-group-item list-group-item-action"
+               ng-class="{active: league.leagueId == selectedLeague.leagueId}">{{league.leagueName}}</a>
+        </div>
+        <button class="btn btn-info" ng-click="showNewLeagueArea()">Create new league</button>
+    </div>
+
+
+    <div class="alert alert-success" ng-model="success" ng-show="success.display">{{success.message}}</div>
+    <div class="alert alert-danger" ng-model="error" ng-show="error.display">{{error.message}}</div>
 
     <div ng-include="'new_league.html'"></div>
 

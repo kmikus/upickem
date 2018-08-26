@@ -3,12 +3,11 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 text-center">
-                <div ng-show="error.display"
-                     ng-model="error"
-                     class="alert alert-danger">
-                    {{error.message}}
-                </div>
 
+                <h1>Create a new league</h1>
+
+                <!--TODO make this a modal pop up-->
+                <!--TODO fix so that Chrome won't give an error if fields aren't validated when canceled-->
                 <form>
                     <div class="form-group">
                         <input class="form-control"
@@ -25,12 +24,14 @@
                                name="add-league-email-or-username"
                                placeholder="Add user (email or username)"
                                type="text"/>
-                        <button ng-click="addUserToSelectedUsersForNewLeague()" btn btn-primary>+</button>
+                        <button class="btn btn-info"
+                                ng-hide="$parent.selectedUsersInNewLeague.length >= $parent.maxMembersInLeague"
+                                ng-click="addUserToSelectedUsersForNewLeague()">+</button>
                     </div>
 
                     <div>
                         <ul>
-                            <li ng-repeat="user in $parent.selectedUsersInNewLeague">{{user.username}}</li>
+                            <li ng-repeat="username in $parent.selectedUsersInNewLeague">{{username}}</li>
                         </ul>
                     </div>
 
