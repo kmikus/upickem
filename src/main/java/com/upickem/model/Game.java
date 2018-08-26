@@ -2,19 +2,20 @@ package com.upickem.model;
 
 import com.upickem.model.audit.TableAudit;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.Year;
 
 @Entity
+@Table(
+        uniqueConstraints=
+        @UniqueConstraint(columnNames={"year", "week", "homeTeam"})
+)
 public class Game extends TableAudit {
 
     @Id
-    @GeneratedValue
     private Long gameId;
 
     @NotNull

@@ -10,4 +10,6 @@ import java.util.List;
 public interface GameService {
 
     public List<Game> pullGameDataFromRemoteServer(Year year, Long week);
+
+    public List<Game> saveGames(List<Game> games);
 }
