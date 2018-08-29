@@ -2,10 +2,9 @@ package com.upickem.controller;
 
 import com.upickem.model.Game;
 import com.upickem.payload.ApiResponse;
-import com.upickem.payload.GameCreateRequest;
+import com.upickem.payload.GameRequest;
 import com.upickem.repository.GameRespository;
 import com.upickem.service.GameService;
-import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import java.time.Year;
 import java.util.List;
 
@@ -30,14 +28,22 @@ public class GameController {
     @Autowired
     GameRespository gameRespository;
 
+    @PostMapping("/datesForWeek")
+    public ResponseEntity<?> getDatesForWeek(@RequestBody GameRequest request) {
+        return ResponseEntity.ok(new ApiResponse<>(true, gameService.getDatesOfGamesForWeekFromRemote(
+                Year.parse(request.getCalendarYear().toString()), request.getNflWeek(), request.getSeasonType()
+        )));
+    }
+
     @GetMapping("/")
     public ResponseEntity<?> getAllGames() {
         return ResponseEntity.ok(new ApiResponse<>(true, gameRespository.findAll()));
     }
 
     @PostMapping("/saveGamesForYearAndWeek")
-    public ResponseEntity<?> saveGamesForYearAndWeek(@RequestBody GameCreateRequest request) {
-        List<Game> games = gameService.pullGameDataFromRemoteServer(Year.parse(request.getYear().toString()), request.getWeek());
+    public ResponseEntity<?> saveGamesForYearAndWeek(@RequestBody GameRequest request) {
+        List<Game> games = gameService.pullGameDataFromRemoteServer(Year.parse(request.getCalendarYear().toString()),
+                request.getNflWeek(), request.getSeasonType());
         try {
             gameService.saveGames(games);
         } catch (DataIntegrityViolationException e) {

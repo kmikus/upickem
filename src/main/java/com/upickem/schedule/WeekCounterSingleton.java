@@ -1,6 +1,8 @@
 package com.upickem.schedule;
 
 public class WeekCounterSingleton {
+    // TODO delete this?
+
     private static WeekCounterSingleton ourInstance = new WeekCounterSingleton();
 
     public static WeekCounterSingleton getInstance() {
@@ -11,7 +13,7 @@ public class WeekCounterSingleton {
     }
 
     private Long week = 1L;
-    private Boolean isFirstScrapeCompleted = false;
+    private Boolean isWeekCorrect = false;
 
     public Long getWeek() {
         return week;
@@ -21,11 +23,11 @@ public class WeekCounterSingleton {
         this.week = week;
     }
 
-    public Boolean getFirstScrapeCompleted() {
-        return isFirstScrapeCompleted;
+    public Boolean getWeekCorrect() {
+        return isWeekCorrect;
     }
 
-    public void setFirstScrapeCompleted(Boolean firstScrapeCompleted) {
-        isFirstScrapeCompleted = firstScrapeCompleted;
+    public void setWeekCorrect(Boolean weekCorrect) {
+        isWeekCorrect = weekCorrect;
     }
 }

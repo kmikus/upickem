@@ -15,7 +15,7 @@ import sun.tools.jconsole.Tab;
 
 @Entity
 @Table(name = "role")
-public class Role extends TableAudit {
+public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

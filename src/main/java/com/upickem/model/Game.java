@@ -42,15 +42,20 @@ public class Game extends TableAudit {
     @NotNull
     private Long awayScore;
 
+    @NotNull
+    private SeasonType seasonType;
+
     private Team winner;
 
-    public Game(@NotNull Year year, @NotNull Long week, @NotNull Team homeTeam, @NotNull Long homeScore, @NotNull Team awayTeam, @NotNull Long awayScore, Team winner) {
+    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull Team homeTeam, @NotNull Long homeScore, @NotNull Team awayTeam, @NotNull Long awayScore, @NotNull SeasonType seasonType, Team winner) {
+        this.gameId = gameId;
         this.year = year;
         this.week = week;
         this.homeTeam = homeTeam;
         this.homeScore = homeScore;
         this.awayTeam = awayTeam;
         this.awayScore = awayScore;
+        this.seasonType = seasonType;
         this.winner = winner;
     }
 
@@ -125,5 +130,14 @@ public class Game extends TableAudit {
 
     public void setWinner(Team winner) {
         this.winner = winner;
+    }
+
+    @NotNull
+    public SeasonType getSeasonType() {
+        return seasonType;
+    }
+
+    public void setSeasonType(@NotNull SeasonType seasonType) {
+        this.seasonType = seasonType;
     }
 }
