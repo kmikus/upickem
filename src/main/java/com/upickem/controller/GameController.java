@@ -28,6 +28,16 @@ public class GameController {
     @Autowired
     GameRespository gameRespository;
 
+    @PostMapping("/saveScheduleForYear/{seasonYear}")
+    public ResponseEntity<?> saveScheduleForYear(@PathVariable Long seasonYear) {
+        Long numRecordsSaved = gameService.saveScheduleForYear(Year.parse(seasonYear.toString()));
+        if (numRecordsSaved > 0) {
+            return ResponseEntity.ok(new ApiResponse<>(true, numRecordsSaved + " records saved"));
+        } else {
+            return ResponseEntity.ok(new ApiResponse<>(false, "Unable to save schedule"));
+        }
+    }
+
     @PostMapping("/datesForWeek")
     public ResponseEntity<?> getDatesForWeek(@RequestBody GameRequest request) {
         return ResponseEntity.ok(new ApiResponse<>(true, gameService.getDatesOfGamesForWeekFromRemote(
@@ -52,7 +62,9 @@ public class GameController {
                     false, "Tried to save games that already exist"));
         } catch (Exception e) {
             log.error("Unknown error occurred", e);
-            return ResponseEntity.ok(new ApiResponse<>(false, "Unknown error occurred"));
+            return ResponseEntity.ok(new ApiResponse<>(false, "Unknown error occurred" +
+                    "while trying to save games for year:" + request.getCalendarYear() + " and week: " +
+                    request.getNflWeek()));
         }
         return new ResponseEntity<>(new ApiResponse<>(
                 true, games.size() + " game records created or updated"), HttpStatus.CREATED);

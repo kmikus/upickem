@@ -1,17 +1,19 @@
 package com.upickem.model;
 
 import com.upickem.model.audit.TableAudit;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.time.Year;
 
 @Entity
 @Table(
         uniqueConstraints=
-        @UniqueConstraint(columnNames={"year", "week", "homeTeam"})
+        @UniqueConstraint(columnNames={"year", "week", "homeTeam", "seasonType"})
 )
 public class Game extends TableAudit {
 
@@ -25,6 +27,9 @@ public class Game extends TableAudit {
     @Min(1)
     @Max(22)
     private Long week;
+
+    @NotNull
+    private LocalDateTime dateAndTime;
 
     @NotNull
     private Team homeTeam;
@@ -47,10 +52,11 @@ public class Game extends TableAudit {
 
     private Team winner;
 
-    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull Team homeTeam, @NotNull Long homeScore, @NotNull Team awayTeam, @NotNull Long awayScore, @NotNull SeasonType seasonType, Team winner) {
+    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull LocalDateTime dateAndTime, @NotNull Team homeTeam, @NotNull Long homeScore, @NotNull Team awayTeam, @NotNull Long awayScore, @NotNull SeasonType seasonType, Team winner) {
         this.gameId = gameId;
         this.year = year;
         this.week = week;
+        this.dateAndTime = dateAndTime;
         this.homeTeam = homeTeam;
         this.homeScore = homeScore;
         this.awayTeam = awayTeam;
@@ -139,5 +145,14 @@ public class Game extends TableAudit {
 
     public void setSeasonType(@NotNull SeasonType seasonType) {
         this.seasonType = seasonType;
+    }
+
+    @NotNull
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(@NotNull LocalDateTime dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 }

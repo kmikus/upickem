@@ -21,4 +21,6 @@ public interface GameService {
     public List<Game> saveGames(List<Game> games);
 
     public List<LocalDate> getDatesOfGamesForWeekFromRemote(Year year, Long week, SeasonType seasonType);
+
+    public Long saveScheduleForYear(Year year);
 }

@@ -20,6 +20,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,38 +40,73 @@ public class GameServiceImpl implements GameService {
     @Value("${nfl.season.endWeek}")
     Long nflEndWeek;
 
+    @Value("${nfl.preseason.endWeek}")
+    Long preseasonEndWeek;
+
+    @Value("${nfl.regseason.endWeek}")
+    Long regseasonEndWeek;
+
+    @Value("${nfl.postseason.skipWeek}")
+    Long skipWeek;
+
     @Override
     public List<Game> saveGames(List<Game> games) {
         return gameRespository.save(games);
     }
 
     @Override
-    public List<LocalDate> getDatesOfGamesForWeekFromRemote(Year calendarYear, Long nflWeek, SeasonType seasonType) {
+    public List<LocalDate> getDatesOfGamesForWeekFromRemote(Year seasonYear, Long nflWeek, SeasonType seasonType) {
         List<LocalDate> dates = new ArrayList<>();
-        String url = constructUrl(calendarYear, nflWeek, seasonType);
+        String url = constructUrl(seasonYear, nflWeek, seasonType);
         Document doc;
         try {
             doc = buildDocumentFromRemote(url);
         } catch (Exception e) {
-            log.error("Could not fetch game data from server for year: " + calendarYear.toString() +
+            log.error("Could not fetch game data from server for year: " + seasonYear.toString() +
                     " and week: " + nflWeek + " and season type: " + seasonType, e);
             return dates;
         }
 
         NodeList nodeList = doc.getElementsByTagName("g");
-        for (int i = 0; i<nodeList.getLength(); i++) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
             NamedNodeMap namedNodeMap = nodeList.item(i).getAttributes();
-            String eid = namedNodeMap.getNamedItem("eid").getNodeValue();
-            String dateString = eid.substring(0, 8);
-            int yearInt = Integer.parseInt(dateString.substring(0, 4));
-            int monthInt = Integer.parseInt(dateString.substring(4, 6));
-            int dayInt = Integer.parseInt(dateString.substring(6, 8));
-
-            LocalDate date = LocalDate.of(yearInt, monthInt, dayInt);
+            LocalDateTime dateTime = constructDateTimeFromXml(namedNodeMap);
+            LocalDate date = dateTime.toLocalDate();
             dates.add(date);
         }
 
         return dates;
+    }
+
+    @Override
+    public Long saveScheduleForYear(Year year) {
+        Long countOfRecordsSaved = 0L;
+        try {
+            for (long i = 1; i <= preseasonEndWeek; i++) {
+                countOfRecordsSaved += saveGames(pullGameDataFromRemoteServer(year, i, SeasonType.PRE)).size();
+            }
+            for (long i = 1; i <= regseasonEndWeek; i++) {
+                countOfRecordsSaved += saveGames(pullGameDataFromRemoteServer(year, i, SeasonType.REG)).size();
+            }
+            for (long i = regseasonEndWeek + 1; i <= nflEndWeek; i++) {
+                if (i == skipWeek) {
+                    continue;
+                }
+                countOfRecordsSaved += saveGames(pullGameDataFromRemoteServer(year, i, SeasonType.POST)).size();
+            }
+            return countOfRecordsSaved;
+        } catch (Exception e) {
+            log.error("Unknown error occurred while trying to save schedule for year", e);
+            return countOfRecordsSaved;
+        }
+    }
+
+    public Year getNflSeasonFromCurrentCalenderMonth() {
+        if (LocalDate.now().getMonthValue() <= nflEndMonth) {
+            return Year.parse(String.valueOf(Year.now().getValue() - 1));
+        } else {
+            return Year.now();
+        }
     }
 
     /*
@@ -112,17 +148,15 @@ public class GameServiceImpl implements GameService {
     where eid is from the schedule above
      */
     @Override
-    public List<Game> pullGameDataFromRemoteServer(Year calendarYear, Long nflWeek, SeasonType seasonType) {
-
-        Year year = setNflSeasonYearFromCalenderYear(calendarYear);
+    public List<Game> pullGameDataFromRemoteServer(Year seasonYear, Long nflWeek, SeasonType seasonType) {
 
         List<Game> games = new ArrayList<>();
-        String url = constructUrl(year, nflWeek, seasonType);
-        Document doc = null;
+        String url = constructUrl(seasonYear, nflWeek, seasonType);
+        Document doc;
         try {
             doc = buildDocumentFromRemote(url);
         } catch (Exception e) {
-            log.error("Could not fetch game data from server for year: " + year.toString() +
+            log.error("Could not fetch game data from server for year: " + seasonYear.toString() +
                     " and week: " + nflWeek + " and season type: " + seasonType, e);
             return games;
         }
@@ -141,7 +175,8 @@ public class GameServiceImpl implements GameService {
             } else {
                 Game game = new Game();
                 game.setGameId(gameId);
-                game.setYear(year);
+                game.setDateAndTime(constructDateTimeFromXml(namedNodeMap));
+                game.setYear(seasonYear);
                 game.setWeek(nflWeek);
                 game.setSeasonType(seasonType);
                 game.setHomeTeam(Team.valueOf(namedNodeMap.getNamedItem("h").getNodeValue()));
@@ -154,15 +189,19 @@ public class GameServiceImpl implements GameService {
         return games;
     }
 
-    private Year setNflSeasonYearFromCalenderYear(Year calendarYear) {
-        if (LocalDate.now().getMonthValue() <= nflEndMonth) {
-            calendarYear = Year.parse(String.valueOf(calendarYear.getValue()-1));
-        }
-        return calendarYear;
+    private LocalDateTime constructDateTimeFromXml(NamedNodeMap namedNodeMap) {
+        String dateString = namedNodeMap.getNamedItem("eid").getNodeValue();
+        int year = Integer.parseInt(dateString.substring(0, 4));
+        int month = Integer.parseInt(dateString.substring(4, 6));
+        int day = Integer.parseInt(dateString.substring(6, 8));
+
+        String[] timeString = namedNodeMap.getNamedItem("t").getNodeValue().split(":");
+        int mins = Integer.parseInt(timeString[0]);
+        int secs = Integer.parseInt(timeString[1]);
+        return LocalDateTime.of(year, month, day, mins, secs);
     }
 
     private Game updateScoresOfGameObject(Game game, NamedNodeMap namedNodeMap) {
-        log.info("From inner method: " + game.getGameId().toString());
 
         String homeScore = namedNodeMap.getNamedItem("hs").getNodeValue();
         if (homeScore.equals("")) {
@@ -200,7 +239,7 @@ public class GameServiceImpl implements GameService {
     private String constructUrl(Year year, Long nflWeek, SeasonType seasonType) {
         if (year.isAfter(Year.now()) || year.isBefore(Year.parse("2000"))) {
             year = LocalDate.now().getMonthValue() > nflEndMonth ? Year.now() :
-                    Year.parse(String.valueOf(Year.now().getValue()-1));
+                    Year.parse(String.valueOf(Year.now().getValue() - 1));
             nflWeek = 1L;
         }
         StringBuilder sb = new StringBuilder();
