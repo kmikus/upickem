@@ -2,9 +2,9 @@ package com.upickem.model;
 
 import com.upickem.model.audit.TableAudit;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -13,55 +13,100 @@ public class Pick extends TableAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long pickId;
 
-    @NotBlank
+    @NotNull
+    @ManyToOne
+    private User user;
+
+    @NotNull
+    @ManyToOne
+    private League league;
+
+    @NotNull
     private Team winningTeam;
 
     @Size(min = 1)
     @ColumnDefault("1")
-    private Long points;
+    private Long pointPotential;
 
-    private Long gameId;
+    @ColumnDefault("0")
+    private Long pointActual;
 
-    public Pick(Team winningTeam, Long points, Long gameId) {
+    @NotNull
+    @ManyToOne
+    private Game gameId;
+
+    public Pick(@NotNull User user, @NotNull League league, @NotNull Team winningTeam, Long pointPotential, Long pointActual, @NotNull Game gameId) {
+        this.user = user;
+        this.league = league;
         this.winningTeam = winningTeam;
-        this.points = points;
+        this.pointPotential = pointPotential;
+        this.pointActual = pointActual;
         this.gameId = gameId;
     }
 
     public Pick() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getPickId() {
+        return pickId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPickId(Long pickId) {
+        this.pickId = pickId;
     }
 
+    @NotNull
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(@NotNull User user) {
+        this.user = user;
+    }
+
+    @NotNull
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(@NotNull League league) {
+        this.league = league;
+    }
+
+    @NotNull
     public Team getWinningTeam() {
         return winningTeam;
     }
 
-    public void setWinningTeam(Team winningTeam) {
+    public void setWinningTeam(@NotNull Team winningTeam) {
         this.winningTeam = winningTeam;
     }
 
-    public Long getPoints() {
-        return points;
+    public Long getPointPotential() {
+        return pointPotential;
     }
 
-    public void setPoints(Long points) {
-        this.points = points;
+    public void setPointPotential(Long pointPotential) {
+        this.pointPotential = pointPotential;
     }
 
-    public Long getGameId() {
+    public Long getPointActual() {
+        return pointActual;
+    }
+
+    public void setPointActual(Long pointActual) {
+        this.pointActual = pointActual;
+    }
+
+    @NotNull
+    public Game getGameId() {
         return gameId;
     }
 
-    public void setGameId(Long gameId) {
+    public void setGameId(@NotNull Game gameId) {
         this.gameId = gameId;
     }
 }
+

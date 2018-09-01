@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>uPickEm</title>
 <body ng-app="upickem">
-<div ng-controller="home" ng-click="resetError()">
+<div id="home-controller" ng-controller="home" ng-click="resetError()">
 
     <nav class="nav">
         <a class="navbar-brand" href="home.html">uPickEm</a>
@@ -21,7 +21,7 @@
         </ul>
     </nav>
 
-    <div class="sidebar col-sm-2">
+    <div class="sidebar col-sm-3">
         <h2>My Leagues</h2>
 
         <div class="list-group">
@@ -35,10 +35,13 @@
     </div>
 
 
-    <div class="alert alert-success" ng-model="success" ng-show="success.display">{{success.message}}</div>
-    <div class="alert alert-danger" ng-model="error" ng-show="error.display">{{error.message}}</div>
+    <div class="content">
+        <div class="alert alert-success" ng-model="success" ng-show="success.display">{{success.message}}</div>
+        <div class="alert alert-danger" ng-model="error" ng-show="error.display">{{error.message}}</div>
 
-    <div ng-include="'new_league.html'"></div>
+        <div ng-include="'new_league.html'"></div>
+        <div ng-include="'selected_league.html'"></div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

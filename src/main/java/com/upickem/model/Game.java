@@ -1,9 +1,11 @@
 package com.upickem.model;
 
 import com.upickem.model.audit.TableAudit;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -34,25 +36,21 @@ public class Game extends TableAudit {
     @NotNull
     private Team homeTeam;
 
-    @Min(0)
-    @Max(300)
-    @NotNull
     private Long homeScore;
 
     @NotNull
     private Team awayTeam;
 
-    @Min(0)
-    @Max(300)
-    @NotNull
     private Long awayScore;
 
     @NotNull
     private SeasonType seasonType;
 
+    private Quarter quarter;
+
     private Team winner;
 
-    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull LocalDateTime dateAndTime, @NotNull Team homeTeam, @NotNull Long homeScore, @NotNull Team awayTeam, @NotNull Long awayScore, @NotNull SeasonType seasonType, Team winner) {
+    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull LocalDateTime dateAndTime, @NotNull Team homeTeam, Long homeScore, @NotNull Team awayTeam, Long awayScore, @NotNull SeasonType seasonType, Quarter quarter, Team winner) {
         this.gameId = gameId;
         this.year = year;
         this.week = week;
@@ -62,6 +60,7 @@ public class Game extends TableAudit {
         this.awayTeam = awayTeam;
         this.awayScore = awayScore;
         this.seasonType = seasonType;
+        this.quarter = quarter;
         this.winner = winner;
     }
 
@@ -103,7 +102,6 @@ public class Game extends TableAudit {
         this.homeTeam = homeTeam;
     }
 
-    @NotNull
     public Long getHomeScore() {
         return homeScore;
     }
@@ -121,7 +119,6 @@ public class Game extends TableAudit {
         this.awayTeam = awayTeam;
     }
 
-    @NotNull
     public Long getAwayScore() {
         return awayScore;
     }
@@ -154,5 +151,13 @@ public class Game extends TableAudit {
 
     public void setDateAndTime(@NotNull LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
+    }
+
+    public Quarter getQuarter() {
+        return quarter;
+    }
+
+    public void setQuarter(Quarter quarter) {
+        this.quarter = quarter;
     }
 }

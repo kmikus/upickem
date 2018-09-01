@@ -1,7 +1,5 @@
 package com.upickem.config;
 
-import com.upickem.model.User;
-import com.upickem.security.UserPrincipal;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

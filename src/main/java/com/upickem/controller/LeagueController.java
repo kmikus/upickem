@@ -8,7 +8,6 @@ import com.upickem.payload.LeagueRequest;
 import com.upickem.repository.LeagueMemberRepository;
 import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.UserRepository;
-import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import java.util.Optional;
 import java.util.Random;
 
 @RestController
-@RequestMapping("api/league")
+@RequestMapping("api/leagues")
 public class LeagueController {
 
     Logger log = LoggerFactory.getLogger(LeagueController.class);

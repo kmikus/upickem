@@ -1,7 +1,5 @@
 package com.upickem.payload;
 
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;

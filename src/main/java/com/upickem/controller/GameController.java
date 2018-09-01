@@ -1,9 +1,12 @@
 package com.upickem.controller;
 
 import com.upickem.model.Game;
+import com.upickem.model.SeasonType;
 import com.upickem.payload.ApiResponse;
+import com.upickem.payload.CurrentWeekResponse;
 import com.upickem.payload.GameRequest;
 import com.upickem.repository.GameRespository;
+import com.upickem.schedule.ScheduleManager;
 import com.upickem.service.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +20,7 @@ import java.time.Year;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/game")
+@RequestMapping("api/games")
 public class GameController {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
@@ -27,6 +30,30 @@ public class GameController {
 
     @Autowired
     GameRespository gameRespository;
+
+    @RequestMapping
+    public ResponseEntity<?> queryGamesWeekYearAndSeasonType(
+            @RequestParam("week") Long week,
+            @RequestParam(value="year") Long year,
+            @RequestParam("seasonType") SeasonType seasonType) {
+        List<Game> response;
+        try {
+            response = gameRespository.findGamesByYearAndWeekAndSeasonTypeOrderByDateAndTime(Year.of(year.intValue()), week, seasonType);
+        } catch (Exception e) {
+            String errorMessage = String.format("Could not fetch games for year: %s, week: %s, and season type: %s",
+                    year, week, seasonType);
+            log.error(errorMessage, e);
+            return ResponseEntity.ok(new ApiResponse<>(false, errorMessage));
+        }
+        return ResponseEntity.ok(new ApiResponse<>(true, response));
+
+    }
+
+    @GetMapping("/currentWeek")
+    public ResponseEntity<?> getGamesForCurrentWeek() {
+        return ResponseEntity.ok(new ApiResponse<>(true, new CurrentWeekResponse(ScheduleManager
+                .getCurrentWeek(), gameService.getGamesForCurrentWeek(), ScheduleManager.getCurrentSeasonType())));
+    }
 
     @PostMapping("/saveScheduleForYear/{seasonYear}")
     public ResponseEntity<?> saveScheduleForYear(@PathVariable Long seasonYear) {

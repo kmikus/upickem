@@ -1,5 +1,9 @@
 body {
-    background-color: #dbffdd;
+    background-color: #ebeee9;
+}
+
+table {
+    background-color: #88adca;
 }
 
 .new-league {
@@ -7,18 +11,27 @@ body {
 }
 
 .sidebar {
-    background-color: #767b85;
     height: 100vh;
-    color: white;
+    color: #303030;
+    width: 25%;
+    align-items: center;
+    border-right: 2px solid;
+    box-shadow: 3px 0px 10px grey;
+    z-index: 50;
 }
 
 .nav {
     background-color: #00315f;
+    z-index: 100;
 }
 
 .navbar-brand {
     color: yellow;
     font-size: x-large;
+}
+
+.navbar-brand:hover {
+    color: white;
 }
 
 .nav-link {
@@ -39,4 +52,8 @@ body {
 
 .jumbotron {
     color: #616161;
+}
+
+.league-title {
+    padding-bottom: 2vh;
 }

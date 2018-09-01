@@ -1,9 +1,11 @@
 package com.upickem.service;
 
 import com.upickem.model.Game;
+import com.upickem.model.Quarter;
 import com.upickem.model.SeasonType;
 import com.upickem.model.Team;
 import com.upickem.repository.GameRespository;
+import com.upickem.schedule.ScheduleManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +103,17 @@ public class GameServiceImpl implements GameService {
         }
     }
 
+    @Override
+    public List<Game> findGamesByYear(Year year) {
+        return gameRespository.findGamesByYear(year);
+    }
+
+    @Override
+    public List<Game> getGamesForCurrentWeek() {
+        return gameRespository.findGamesByYearAndWeekAndSeasonTypeOrderByDateAndTime(getNflSeasonFromCurrentCalenderMonth(),
+                ScheduleManager.getCurrentWeek(), ScheduleManager.getCurrentSeasonType());
+    }
+
     public Year getNflSeasonFromCurrentCalenderMonth() {
         if (LocalDate.now().getMonthValue() <= nflEndMonth) {
             return Year.parse(String.valueOf(Year.now().getValue() - 1));
@@ -171,6 +184,7 @@ public class GameServiceImpl implements GameService {
             if (gameFromDb.isPresent()) {
                 Game game = gameFromDb.get();
                 game = updateScoresOfGameObject(game, namedNodeMap);
+                game = updateQuarterOfGameObject(game, namedNodeMap);
                 games.add(game);
             } else {
                 Game game = new Game();
@@ -182,6 +196,7 @@ public class GameServiceImpl implements GameService {
                 game.setHomeTeam(Team.valueOf(namedNodeMap.getNamedItem("h").getNodeValue()));
                 game.setAwayTeam(Team.valueOf(namedNodeMap.getNamedItem("v").getNodeValue()));
                 game = updateScoresOfGameObject(game, namedNodeMap);
+                game = updateQuarterOfGameObject(game, namedNodeMap);
                 games.add(game);
             }
         }
@@ -204,16 +219,12 @@ public class GameServiceImpl implements GameService {
     private Game updateScoresOfGameObject(Game game, NamedNodeMap namedNodeMap) {
 
         String homeScore = namedNodeMap.getNamedItem("hs").getNodeValue();
-        if (homeScore.equals("")) {
-            game.setHomeScore(0L);
-        } else {
+        if (!homeScore.equals("")) {
             game.setHomeScore(Long.parseLong(homeScore));
         }
 
         String awayScore = namedNodeMap.getNamedItem("vs").getNodeValue();
-        if (awayScore.equals("")) {
-            game.setAwayScore(0L);
-        } else {
+        if (!awayScore.equals("")) {
             game.setAwayScore(Long.parseLong(awayScore));
         }
 
@@ -225,6 +236,24 @@ public class GameServiceImpl implements GameService {
             }
         }
 
+        return game;
+    }
+
+    private Game updateQuarterOfGameObject(Game game, NamedNodeMap namedNodeMap) {
+        String quarterString = namedNodeMap.getNamedItem("q").getNodeValue();
+        if (quarterString.equalsIgnoreCase("F")) {
+            game.setQuarter(Quarter.FINAL);
+        } else if (quarterString.equalsIgnoreCase("1")) {
+            game.setQuarter(Quarter.ONE);
+        } else if (quarterString.equalsIgnoreCase("2")) {
+            game.setQuarter(Quarter.TWO);
+        } else if (quarterString.equalsIgnoreCase("3")) {
+            game.setQuarter(Quarter.THREE);
+        } else if (quarterString.equalsIgnoreCase("4")) {
+            game.setQuarter(Quarter.FOUR);
+        } else if (quarterString.equalsIgnoreCase("OT")) { // TODO are we sure about this?
+            game.setQuarter(Quarter.OT);
+        }
         return game;
     }
 
