@@ -19,6 +19,8 @@ import java.util.List;
 @Component
 public class ScheduleManager {
 
+    // TODO there was a bug here where the application wouldn't start up and get an array list OOB exception
+
     Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired

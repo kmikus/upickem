@@ -1,14 +1,15 @@
 package com.upickem.model;
 
 import com.upickem.model.audit.TableAudit;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "pick")
+@Table(name = "pick",
+        uniqueConstraints=
+        @UniqueConstraint(columnNames={"user", "league", "game"})
+)
 public class Pick extends TableAudit {
 
     @Id
@@ -17,33 +18,33 @@ public class Pick extends TableAudit {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name="user")
     private User user;
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name="league")
     private League league;
 
     @NotNull
     private Team winningTeam;
 
-    @Size(min = 1)
-    @ColumnDefault("1")
-    private Long pointPotential;
+    private Long pointPotential = 1L;
 
-    @ColumnDefault("0")
     private Long pointActual;
 
     @NotNull
     @ManyToOne
-    private Game gameId;
+    @JoinColumn(name="game")
+    private Game game;
 
-    public Pick(@NotNull User user, @NotNull League league, @NotNull Team winningTeam, Long pointPotential, Long pointActual, @NotNull Game gameId) {
+    public Pick(@NotNull User user, @NotNull League league, @NotNull Team winningTeam, Long pointPotential, Long pointActual, @NotNull Game game) {
         this.user = user;
         this.league = league;
         this.winningTeam = winningTeam;
         this.pointPotential = pointPotential;
         this.pointActual = pointActual;
-        this.gameId = gameId;
+        this.game = game;
     }
 
     public Pick() {
@@ -101,12 +102,12 @@ public class Pick extends TableAudit {
     }
 
     @NotNull
-    public Game getGameId() {
-        return gameId;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameId(@NotNull Game gameId) {
-        this.gameId = gameId;
+    public void setGame(@NotNull Game game) {
+        this.game = game;
     }
 }
 

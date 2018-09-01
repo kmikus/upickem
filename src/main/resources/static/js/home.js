@@ -176,6 +176,21 @@ app.controller('home', function ($scope, $http, $window) {
             )
         })
     }
+
+    $scope.submitPicks = function() {
+        let requestBody = {
+            leagueId: $scope.selectedLeague.leagueId,
+            gameIdsAndWinners: []
+        }
+        $scope.selectedGamesRadio.forEach(function(element) {
+            if (element.value != null) {
+                requestBody.gameIdsAndWinners.push(element)
+            }
+        })
+        $http.post("/api/picks/create", requestBody).then(function(response) {
+            console.log(response.data);
+        })
+    }
     // END LEAGUE SELECTED -------------------------------------
 
     // BEGIN CREATING LEAGUES

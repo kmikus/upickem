@@ -12,7 +12,7 @@
                             ng-options="week as week.displayVal for week in $parent.weekSelectionList"
                             ng-change="$parent.updateGameDataOnSelectedWeekChange()">
                     </select>
-                    <button class="btn btn-primary" ng-click="submitPicks()">Submit</button>
+                    <button class="btn btn-primary" ng-click="$parent.submitPicks()">Submit</button>
                 </div>
 
                 <table class="table table-sm table-bordered table-striped">
@@ -26,10 +26,10 @@
                     <tr ng-repeat="game in $parent.selectedGames">
                         <td align="left">{{game.homeTeam}}</td>
                         <td><input type="radio" ng-model="selectedGamesRadio[$index].value"
-                                   name="{{game.gameId}}" value="{{game.awayTeam}}"/></td>
+                                   name="{{game.game}}" value="{{game.homeTeam}}"/></td>
                         <td align="left">{{game.awayTeam}}</td>
                         <td><input type="radio" ng-model="selectedGamesRadio[$index].value"
-                            name="{{game.gameId}}" value="{{game.homeTeam}}"/></td>
+                            name="{{game.game}}" value="{{game.awayTeam}}"/></td>
 
                     </tr>
                 </table>

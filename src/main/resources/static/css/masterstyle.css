@@ -1,9 +1,13 @@
+/*
+
+ */
+
 body {
-    background-color: #ebeee9;
+    background-color: #C5CAE9;
 }
 
 table {
-    background-color: #88adca;
+    background-color: #BDBDBD;
 }
 
 .new-league {
@@ -16,17 +20,16 @@ table {
     width: 25%;
     align-items: center;
     border-right: 2px solid;
-    box-shadow: 3px 0px 10px grey;
     z-index: 50;
 }
 
 .nav {
-    background-color: #00315f;
+    background-color: #303F9F;
     z-index: 100;
 }
 
 .navbar-brand {
-    color: yellow;
+    color: #8BC34A;
     font-size: x-large;
 }
 
@@ -39,7 +42,12 @@ table {
 }
 
 .btn-primary {
-    background-color: #607D8B;
+    background-color: #8BC34A;
+    border: #8BC34A;
+}
+
+.btn-primary:hover {
+    background-color: #303F9F;
 }
 
 .btn-secondary {
