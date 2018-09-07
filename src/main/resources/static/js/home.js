@@ -92,6 +92,7 @@ app.controller('home', function ($scope, $http, $window) {
     // BEGIN LEAGUE SELECTED
     $scope.selectLeague = function(league) {
         $scope.selectedLeague = league;
+        $scope.newLeagueClicked = false;
     }
 
     $scope.generateFullWeekSelectionList = function(includePreseason = false) {
@@ -191,11 +192,16 @@ app.controller('home', function ($scope, $http, $window) {
             console.log(response.data);
         })
     }
+
+    $scope.getPicksForWeek = function() {
+        $http.get("api/picks?leagueId=1&year=2018&week=1")
+    }
     // END LEAGUE SELECTED -------------------------------------
 
     // BEGIN CREATING LEAGUES
     $scope.showNewLeagueArea = function() {
         $scope.newLeagueClicked = true;
+        $scope.selectedLeague = null;
     }
 
     $scope.addUserToSelectedUsersForNewLeague = function() {

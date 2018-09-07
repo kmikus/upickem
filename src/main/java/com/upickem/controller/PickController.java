@@ -10,11 +10,9 @@ import com.upickem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +35,19 @@ public class PickController {
     GameRespository gameRespository;
 
     //Todo move this to a service
+
+    // TODO add season type
+    @RequestMapping
+    public ResponseEntity<?> getPicksForLoggedInUserByLeague(@RequestParam Long leagueId,
+                                                             @RequestParam Long year,
+                                                             @RequestParam Long week) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username).get();
+        League league = leagueRepository.findById(leagueId).get();
+        Year yearInput = Year.parse(year.toString());
+        List<Pick> picks = pickRepository.findByUserAndLeagueAndGameYearAndGameWeek(user, league, yearInput, week);
+        return ResponseEntity.ok(new ApiResponse<>(true, picks));
+    }
 
     @PostMapping("/create")
     public ResponseEntity<?> insertPicks(@RequestBody PicksCreateRequest request) {
