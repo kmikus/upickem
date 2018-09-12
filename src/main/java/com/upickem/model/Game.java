@@ -9,7 +9,7 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.time.Year;
 
 @Entity
@@ -31,7 +31,7 @@ public class Game extends TableAudit {
     private Long week;
 
     @NotNull
-    private LocalDateTime dateAndTime;
+    private Timestamp dateAndTime;
 
     @NotNull
     private Team homeTeam;
@@ -50,7 +50,12 @@ public class Game extends TableAudit {
 
     private Team winner;
 
-    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull LocalDateTime dateAndTime, @NotNull Team homeTeam, Long homeScore, @NotNull Team awayTeam, Long awayScore, @NotNull SeasonType seasonType, Quarter quarter, Team winner) {
+    private boolean isTie = false;
+
+    public Game() {
+    }
+
+    public Game(Long gameId, @NotNull Year year, @NotNull Long week, @NotNull Timestamp dateAndTime, @NotNull Team homeTeam, Long homeScore, @NotNull Team awayTeam, Long awayScore, @NotNull SeasonType seasonType, Quarter quarter, Team winner, boolean isTie) {
         this.gameId = gameId;
         this.year = year;
         this.week = week;
@@ -62,9 +67,15 @@ public class Game extends TableAudit {
         this.seasonType = seasonType;
         this.quarter = quarter;
         this.winner = winner;
+        this.isTie = isTie;
     }
 
-    public Game() {
+    public boolean isTie() {
+        return isTie;
+    }
+
+    public void setTie(boolean tie) {
+        isTie = tie;
     }
 
     public Long getGameId() {
@@ -145,11 +156,11 @@ public class Game extends TableAudit {
     }
 
     @NotNull
-    public LocalDateTime getDateAndTime() {
+    public Timestamp getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(@NotNull LocalDateTime dateAndTime) {
+    public void setDateAndTime(@NotNull Timestamp dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 

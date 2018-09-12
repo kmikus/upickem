@@ -1,6 +1,7 @@
 package com.upickem.model;
 
 public enum Team {
+    TIE, // FOR A TIE
     ARI,
     ATL,
     BAL,

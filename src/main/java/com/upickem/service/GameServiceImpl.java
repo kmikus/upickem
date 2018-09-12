@@ -21,9 +21,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Year;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -177,6 +180,7 @@ public class GameServiceImpl implements GameService {
         if (nodeList.getLength() == 0) {
             return games;
         }
+
         for (int i = 0; i < nodeList.getLength(); i++) {
             NamedNodeMap namedNodeMap = nodeList.item(i).getAttributes();
             Long gameId = Long.parseLong(namedNodeMap.getNamedItem("eid").getNodeValue());
@@ -189,7 +193,7 @@ public class GameServiceImpl implements GameService {
             } else {
                 Game game = new Game();
                 game.setGameId(gameId);
-                game.setDateAndTime(constructDateTimeFromXml(namedNodeMap));
+                game.setDateAndTime(Timestamp.valueOf(constructDateTimeFromXml(namedNodeMap)));
                 game.setYear(seasonYear);
                 game.setWeek(nflWeek);
                 game.setSeasonType(seasonType);
@@ -198,6 +202,20 @@ public class GameServiceImpl implements GameService {
                 game = updateScoresOfGameObject(game, namedNodeMap);
                 game = updateQuarterOfGameObject(game, namedNodeMap);
                 games.add(game);
+            }
+        }
+
+        for (int i=1; i<games.size(); i++) {
+            if (games.get(i).getDateAndTime().toLocalDateTime().getDayOfWeek() !=
+                    games.get(i-1).getDateAndTime().toLocalDateTime().getDayOfWeek()) {
+                continue;
+                // Case where the second hour is less than the first, i.e. the first game is a morning game and
+                // the second game is an afternoon game
+            } else if (games.get(i).getDateAndTime().toLocalDateTime().getHour() <
+                    games.get(i-1).getDateAndTime().toLocalDateTime().getHour()) {
+                LocalDateTime currentDateTime = games.get(i-1).getDateAndTime().toLocalDateTime();
+                LocalDateTime fixedDateTime = currentDateTime.minus(12L, ChronoUnit.HOURS);
+                games.get(i-1).setDateAndTime(Timestamp.valueOf(fixedDateTime));
             }
         }
 
@@ -211,9 +229,11 @@ public class GameServiceImpl implements GameService {
         int day = Integer.parseInt(dateString.substring(6, 8));
 
         String[] timeString = namedNodeMap.getNamedItem("t").getNodeValue().split(":");
-        int mins = Integer.parseInt(timeString[0]);
-        int secs = Integer.parseInt(timeString[1]);
-        return LocalDateTime.of(year, month, day, mins, secs);
+        int hours = Integer.parseInt(timeString[0]);
+        hours += 12;
+        hours = hours % 24;
+        int mins = Integer.parseInt(timeString[1]);
+        return LocalDateTime.of(year, month, day, hours, mins);
     }
 
     private Game updateScoresOfGameObject(Game game, NamedNodeMap namedNodeMap) {
@@ -233,6 +253,8 @@ public class GameServiceImpl implements GameService {
                 game.setWinner(game.getHomeTeam());
             } else if (game.getAwayScore() > game.getHomeScore()) {
                 game.setWinner(game.getAwayTeam());
+            } else {
+                game.setTie(true);
             }
         }
 

@@ -65,3 +65,18 @@ table {
 .league-title {
     padding-bottom: 2vh;
 }
+
+.display-messages {
+    padding-top: 2%;
+    font-size: 14pt;
+}
+
+.close-alert {
+    float: right;
+    font-size: 14pt;
+    margin-right: -2%;
+}
+
+.close-alert:hover {
+    cursor: pointer;
+}
