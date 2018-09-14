@@ -2,6 +2,7 @@ package com.upickem.schedule;
 
 import com.upickem.model.SeasonType;
 import com.upickem.service.GameService;
+import com.upickem.service.PickService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ScheduleManager {
 
     @Autowired
     GameService gameService;
+
+    @Autowired
+    PickService pickService;
 
     static private Long currentWeek = 1L;
     static private SeasonType currentSeasonType = SeasonType.PRE;
@@ -61,6 +65,14 @@ public class ScheduleManager {
             log.error("Could not save game data for " + currentSeasonType +
                     " " + Year.now() + " week " + currentWeek, e);
         }
+
+        try {
+            pickService.scoreReadyUnscoredPicks();
+            log.info("All unscored picks scored");
+        } catch (Exception e) {
+            log.error("Unable to score picks");
+        }
+        // TODO allow force saving of picks
     }
 
     // Every Tuesday at 2AM and 2PM from August to February

@@ -28,8 +28,8 @@
                         <td align="left">{{game.dateFormatted}}</td>
                         <td align="left">{{game.homeTeam}}</td>
                         <td><input type="radio" ng-model="selectedGamesRadio[$index].value"
-                                   name="{{game.game}}"
                                    ng-disabled="nowTime > selectedGames[$index].dateObj"
+                                   name="{{game.game}}"
                                    value="{{game.homeTeam}}"/>
                         </td>
                         <td align="left">{{game.awayTeam}}</td>

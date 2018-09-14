@@ -16,4 +16,7 @@ public interface PickRepository extends JpaRepository<Pick, Long> {
     public Optional<Pick> findByUserAndLeagueAndGame(User user, League league, Game game);
 
     public List<Pick> findByUserAndLeagueAndGameYearAndGameWeek(User user, League league, Year year, Long week);
+
+    @Query("select p from Pick p where p.pointActual is null and p.game.winner is not null")
+    public List<Pick> findPicksReadyToBeScored();
 }

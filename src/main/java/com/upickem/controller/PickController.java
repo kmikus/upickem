@@ -7,11 +7,14 @@ import com.upickem.repository.GameRespository;
 import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.PickRepository;
 import com.upickem.repository.UserRepository;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +66,10 @@ public class PickController {
 
             Long gameId = Long.parseLong(gameIdAndWinner.get("gameId"));
             Game game = gameRespository.findByGameId(gameId).get();
+            Timestamp gameDateAndTime = game.getDateAndTime();
+            if (gameDateAndTime.toLocalDateTime().isBefore(LocalDateTime.now())) {
+                return ResponseEntity.ok(new ApiResponse<>(false, "Cannot save picks after game starts"));
+            }
             Team winner = Team.valueOf(gameIdAndWinner.get("value"));
 
             Optional<Pick> pickFromDb = pickRepository.findByUserAndLeagueAndGame(user, league, game);
