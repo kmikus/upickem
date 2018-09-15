@@ -3,24 +3,39 @@
  */
 
 body {
-    background-color: #C5CAE9;
+    background-color: #f6f6f6;
 }
 
 table {
-    background-color: #BDBDBD;
+    background-color: transparent;
 }
 
 .new-league {
     margin-top: 5%;
 }
 
-.sidebar {
-    height: 100vh;
-    color: #303030;
-    width: 25%;
+.left-sidebar {
     align-items: center;
-    border-right: 2px solid;
     z-index: 50;
+    margin: 3% 6% 0 0;
+    padding: 4%;
+    border: 1px solid slategray;
+    border-radius: 10%;
+}
+
+.left-sidebar h2 {
+    margin-top: 0;
+}
+
+body {
+    padding-top: 4%;
+}
+
+.content {
+    margin: 3% 0 0 0;
+    border-left: 1px solid slategray;
+    padding-left: 5%;
+    min-height: 100vh;
 }
 
 .nav {
@@ -80,3 +95,10 @@ table {
 .close-alert:hover {
     cursor: pointer;
 }
+
+.selected-league-menu {
+    border-top: 1px solid slategray;
+    margin: 10% 0;
+    padding-top: 10%;
+}
+

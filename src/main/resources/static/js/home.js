@@ -1,10 +1,23 @@
 'use strict';
 
-app.controller('home', function ($scope, $http, $window) {
+angular.module('upickem').controller('home', function ($scope, $http, $window) {
+
+    const vm = this;
 
     // TODO seperate selected_league and new_league into different controllers
 
     // BEGIN CONFIG
+
+    vm.pageNames =  {
+        currentWeekPicks: 'currentWeekPicks',
+        newLeague: 'newLeague',
+        memberScoreboard: 'memberScoreboard'
+    };
+
+    vm.contentPage = {
+        default: vm.pageNames.currentWeekPicks,
+        current: vm.pageNames.currentWeekPicks
+    };
 
     // TODO maybe make this a league setting with default set to no
     const IS_PRESEASON_INCLUDED = false;
@@ -69,6 +82,11 @@ app.controller('home', function ($scope, $http, $window) {
         })
     };
 
+    // TODO migrate above function to service based
+    function getUserLeagueData() {
+        return $http.get("/api/users/getLeaguesForLoggedInUser");
+    }
+
     $scope.getMaxMembersInLeague = function () {
         $http.get("api/leagues/getMaxMembers").then(function (response) {
             if (response.data.success) {
@@ -92,12 +110,6 @@ app.controller('home', function ($scope, $http, $window) {
             }
         })
     };
-
-    function getCutoffForCurrentWeek() {
-        if ($scope.currentWeekGame != null) {
-            // TODO was here
-        }
-    }
 
     // END INITIALIZATION -------------------------------------
 
@@ -228,7 +240,7 @@ app.controller('home', function ($scope, $http, $window) {
 
     // BEGIN CREATING LEAGUES
     $scope.showNewLeagueArea = function () {
-        $scope.newLeagueClicked = true;
+        vm.contentPage.default = vm.pageNames.newLeague;
         $scope.selectedLeague = null;
     };
 
@@ -270,7 +282,6 @@ app.controller('home', function ($scope, $http, $window) {
     };
 
     $scope.cancelCreateNewLeague = function () {
-        $scope.newLeagueClicked = false;
         $scope.selectedUsersInNewLeague = [];
     };
     // END CREATING LEAGUES --------------------------------------
@@ -283,6 +294,18 @@ app.controller('home', function ($scope, $http, $window) {
         $scope.success.display = false;
     };
 
-    $scope.refreshData();
+    (function() {
+        getUserLeagueData().then(function(response) {
+            $scope.getMaxMembersInLeague();
+            $scope.getCurrentWeekAndGames();
+            $scope.userLeagues = response.data.message;
+            if ($scope.userLeagues.length > 0) {
+                $scope.selectLeague($scope.userLeagues[0]);
+                vm.contentPage.current = pageNames.currentWeekPicks;
+            } else {
+                vm.contentPage = pageNames.newLeague;
+            }
+        })
+    })();
 
 });

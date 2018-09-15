@@ -1,47 +1,41 @@
-<div ng-show="newLeagueClicked" class="new-league">
-    <div class="container">
+<div ng-show="$parent.vm.contentPage.current === $parent.vm.pageNames.newLeague" class="new-league">
 
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 text-center">
+    <h1>{{selectedLeague.leagueName}}</h1>
 
-                <h1>{{selectedLeague.leagueName}}</h1>
-
-                <!--TODO make this a modal pop up-->
-                <!--TODO fix so that Chrome won't give an error if fields aren't validated when canceled-->
-                <form>
-                    <div class="form-group">
-                        <input class="form-control"
-                               ng-model="$parent.addLeagueNameInput"
-                               name="league-name"
-                               placeholder="League Name"
-                               type="text"
-                               required/>
-                    </div>
-
-                    <div class="form-group">
-                        <input class="form-control"
-                               ng-model="$parent.addLeagueEmailOrUsernameInput"
-                               name="add-league-email-or-username"
-                               placeholder="Add user (email or username)"
-                               type="text"/>
-                        <button class="btn btn-info"
-                                ng-hide="$parent.selectedUsersInNewLeague.length >= $parent.maxMembersInLeague"
-                                ng-click="addUserToSelectedUsersForNewLeague()">+</button>
-                    </div>
-
-                    <div>
-                        <ul>
-                            <li ng-repeat="username in $parent.selectedUsersInNewLeague">{{username}}</li>
-                        </ul>
-                    </div>
-
-                    <div class="form-group">
-                        <!-- TODO Implement this -->
-                        <button class="btn btn-primary btn-block" ng-click="createNewLeagueSubmit()">Submit</button>
-                        <button class="btn btn-primary btn-block" ng-click="cancelCreateNewLeague()">Cancel</button>
-                    </div>
-                </form>
-            </div>
+    <!--TODO make this a modal pop up-->
+    <!--TODO fix so that Chrome won't give an error if fields aren't validated when canceled-->
+    <form>
+        <div class="form-group">
+            <input class="form-control"
+                   ng-model="$parent.addLeagueNameInput"
+                   name="league-name"
+                   placeholder="League Name"
+                   type="text"
+                   required/>
         </div>
-    </div>
+
+        <div class="form-group">
+            <input class="form-control"
+                   ng-model="$parent.addLeagueEmailOrUsernameInput"
+                   name="add-league-email-or-username"
+                   placeholder="Add user (email or username)"
+                   type="text"/>
+            <button class="btn btn-info"
+                    ng-hide="$parent.selectedUsersInNewLeague.length >= $parent.maxMembersInLeague"
+                    ng-click="addUserToSelectedUsersForNewLeague()">+
+            </button>
+        </div>
+
+        <div>
+            <ul>
+                <li ng-repeat="username in $parent.selectedUsersInNewLeague">{{username}}</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <!-- TODO Implement this -->
+            <button class="btn btn-primary btn-block" ng-click="createNewLeagueSubmit()">Submit</button>
+            <button class="btn btn-primary btn-block" ng-click="cancelCreateNewLeague()">Cancel</button>
+        </div>
+    </form>
 </div>
