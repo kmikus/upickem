@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>uPickEm</title>
 <body ng-app="upickem">
-<div id="home-controller" ng-controller="home">
+<div id="home-controller" ng-controller="homeController as home">
 
     <div class="container-fullwidth">
         <nav class="nav navbar-fixed-top">
@@ -34,14 +34,22 @@
                            ng-repeat="league in userLeagues"
                            ng-click="selectLeague(league)"
                            class="list-group-item list-group-item-action"
-                           ng-class="{active: league.leagueId == selectedLeague.leagueId}">{{league.leagueName}}</a>
+                           ng-class="{active: league.leagueId == selectedLeague.leagueId}">{{league.leagueName}}
+                            <span class="league-suffix">{{league.suffix}}</span></a>
                     </div>
                     <button class="btn btn-primary" ng-click="showNewLeagueArea()">Create new league</button>
                 </div>
-                <div id="selected-league-menu" class="selected-league-menu list-group">
+                <div ng-show="home.contentPage.current == home.pageNames.main.selectedLeague"
+                     id="selected-league-menu" class="selected-league-menu list-group">
                     <h3>League Menu</h3>
-                    <a class="list-group-item list-group-item-action" href="#">Picks</a>
-                    <a class="list-group-item list-group-item-action" href="#">Scoreboard</a>
+                    <a class="list-group-item list-group-item-action"
+                       ng-click="home.openSelectedLeagueSubPage(home.pageNames.selectedLeagueSubPage.currentWeekPicks)"
+                       ng-class="{active: home.contentPage.selectedLeagueSubPage == home.pageNames.selectedLeagueSubPage.currentWeekPicks}"
+                       href="#">Picks</a>
+                    <a class="list-group-item list-group-item-action"
+                       ng-click="home.openSelectedLeagueSubPage(home.pageNames.selectedLeagueSubPage.memberScoreboard)"
+                       ng-class="{active: home.contentPage.selectedLeagueSubPage == home.pageNames.selectedLeagueSubPage.memberScoreboard}"
+                       href="#">Scoreboard</a>
                 </div>
             </div>
 
@@ -60,6 +68,8 @@
 
                 <div ng-include="'new_league.html'"></div>
                 <div ng-include="'selected_league.html'"></div>
+                <div ng-if="home.contentPage.selectedLeagueSubPage === home.pageNames.selectedLeagueSubPage.memberScoreboard"
+                     ng-include="'member_scoreboard.html'"></div>
             </div>
         </div>
     </div>
@@ -79,6 +89,10 @@
 
     <script src="js/main.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/memberScoreboardService.js"></script>
+    <script src="js/memberScoreboardController.js"></script>
+    <script src="js/leagueService.js"></script>
+    <script src="js/gameService.js"></script>
 </div>
 </body>
 </html>

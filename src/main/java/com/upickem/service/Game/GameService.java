@@ -1,4 +1,4 @@
-package com.upickem.service;
+package com.upickem.service.Game;
 
 import com.upickem.model.Game;
 import com.upickem.model.SeasonType;

@@ -74,7 +74,8 @@ body {
 }
 
 .jumbotron {
-    color: #616161;
+    color: #8BC34A;
+    background-color: #303F9F;
 }
 
 .league-title {
@@ -102,3 +103,7 @@ body {
     padding-top: 10%;
 }
 
+.league-suffix {
+    color: lightgray;
+    font-size: xx-small;
+}

@@ -1,4 +1,5 @@
-<div ng-show="selectedLeague != null" class="selected-league">
+<div ng-show="$parent.home.contentPage.selectedLeagueSubPage === $parent.home.pageNames.selectedLeagueSubPage.currentWeekPicks"
+     class="selected-league">
 
     <h1 class="league-title">{{$parent.selectedLeague.leagueName}}</h1>
 

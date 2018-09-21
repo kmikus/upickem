@@ -8,6 +8,9 @@ import com.upickem.payload.LeagueRequest;
 import com.upickem.repository.LeagueMemberRepository;
 import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.UserRepository;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/leagues")
@@ -49,6 +51,27 @@ public class LeagueController {
         return ResponseEntity.ok(new ApiResponse<>(true, LEAGUE_MAX_MEMBERS));
     }
 
+    @GetMapping("/{leagueId}/users")
+    //TODO FIX THIS
+    public ResponseEntity<?> getMembersInLeague(@PathVariable Long leagueId) {
+        Optional<League> league = leagueRepository.findById(leagueId);
+        if (!league.isPresent()) {
+            return ResponseEntity.ok(new ApiResponse<>(false,
+                    String.format("Could not find league id %s", leagueId)));
+        }
+        List<LeagueMember> leagueMembers = leagueMemberRepository.findAllByLeague(league.get());
+        List<HashMap<String,String>> response = new ArrayList<>();
+        leagueMembers.forEach(leagueMember -> {
+            User user = leagueMember.getUser();
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("username", user.getUsername());
+            hashMap.put("firstName", user.getFirstName());
+            hashMap.put("lastName", user.getLastName());
+            response.add(hashMap);
+        });
+        return ResponseEntity.ok(new ApiResponse<>(true, response));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> createLeague(@Valid @RequestBody LeagueRequest leagueRequest) {
         League league = new League();
@@ -56,7 +79,7 @@ public class LeagueController {
         league.setName(leagueRequest.getName());
         String suffix = "";
         Random rand = new Random();
-        for (int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             suffix += rand.nextInt(9);
         }
         league.setSuffix(suffix);
@@ -94,7 +117,7 @@ public class LeagueController {
 
         // Can't find user
         Optional<User> user = userRepository.findById(userId);
-        if(!user.isPresent()) {
+        if (!user.isPresent()) {
             responseMessage = "User not found for user id: " + userId;
             log.info(responseMessage);
             return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));
@@ -102,17 +125,19 @@ public class LeagueController {
 
         // Can't find league
         Optional<League> league = leagueRepository.findById(leagueId);
-        if(!league.isPresent()) {
+        if (!league.isPresent()) {
             responseMessage = "League not found for league id: " + leagueId;
             log.info(responseMessage);
-            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));        }
+            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));
+        }
 
         // User is already member of league
-        if(leagueMemberRepository.existsByUserAndLeague(user.get(), league.get())) {
+        if (leagueMemberRepository.existsByUserAndLeague(user.get(), league.get())) {
             responseMessage = "User: " + user.get().getUsername() + " is already a member of league id: " +
                     league.get().getId();
             log.info(responseMessage);
-            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));        }
+            return ResponseEntity.ok(new ApiResponse<>(false, responseMessage));
+        }
 
         // Success
         LeagueMember leagueMember = new LeagueMember(user.get(), league.get());
@@ -120,6 +145,7 @@ public class LeagueController {
         responseMessage = "User: " + user.get().getUsername() + " added to league id: " +
                 league.get().getId();
         log.info(responseMessage);
-        return ResponseEntity.ok(new ApiResponse<>(true, responseMessage));    }
+        return ResponseEntity.ok(new ApiResponse<>(true, responseMessage));
+    }
 
 }

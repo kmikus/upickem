@@ -7,7 +7,7 @@ import com.upickem.repository.GameRespository;
 import com.upickem.repository.LeagueRepository;
 import com.upickem.repository.PickRepository;
 import com.upickem.repository.UserRepository;
-import io.swagger.annotations.Api;
+import com.upickem.service.Pick.PickService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,7 +37,24 @@ public class PickController {
     @Autowired
     GameRespository gameRespository;
 
+    @Autowired
+    PickService pickService;
+
     //Todo move this to a service
+
+    @PostMapping("/runScoring")
+    public ResponseEntity<?> runScoring() {
+        pickService.scoreReadyUnscoredPicks();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Picks scored"));
+    }
+
+    @RequestMapping("/pointsByYear")
+    public ResponseEntity<?> getTotalPointsForYearInLeague(@RequestParam Long leagueId,
+                                                           @RequestParam Long year) {
+        return ResponseEntity.ok(new ApiResponse<>(true, pickService.getTotalPointsForYearInLeague(
+                leagueRepository.findById(leagueId).get(), Year.of(year.intValue())
+        )));
+    }
 
     // TODO add season type
     @RequestMapping
@@ -49,6 +66,9 @@ public class PickController {
         League league = leagueRepository.findById(leagueId).get();
         Year yearInput = Year.parse(year.toString());
         List<Pick> picks = pickRepository.findByUserAndLeagueAndGameYearAndGameWeek(user, league, yearInput, week);
+        picks.forEach(pick -> {
+            pick.setUser(new User());
+        });
         return ResponseEntity.ok(new ApiResponse<>(true, picks));
     }
 

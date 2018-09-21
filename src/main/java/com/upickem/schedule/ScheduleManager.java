@@ -1,8 +1,8 @@
 package com.upickem.schedule;
 
 import com.upickem.model.SeasonType;
-import com.upickem.service.GameService;
-import com.upickem.service.PickService;
+import com.upickem.service.Game.GameService;
+import com.upickem.service.Pick.PickService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

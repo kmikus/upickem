@@ -7,7 +7,7 @@ import com.upickem.payload.CurrentWeekResponse;
 import com.upickem.payload.GameRequest;
 import com.upickem.repository.GameRespository;
 import com.upickem.schedule.ScheduleManager;
-import com.upickem.service.GameService;
+import com.upickem.service.Game.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

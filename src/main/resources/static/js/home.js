@@ -1,22 +1,30 @@
 'use strict';
 
-angular.module('upickem').controller('home', function ($scope, $http, $window) {
+angular.module('upickem').controller('homeController', function ($scope, $http, leagueService) {
 
     const vm = this;
+
+    //TODO BUG on page load, buttons aren't disabled
 
     // TODO seperate selected_league and new_league into different controllers
 
     // BEGIN CONFIG
 
     vm.pageNames =  {
-        currentWeekPicks: 'currentWeekPicks',
-        newLeague: 'newLeague',
-        memberScoreboard: 'memberScoreboard'
+        main: {
+            newLeague: 'newLeague',
+            selectedLeague: 'selectedLeague'
+        },
+        selectedLeagueSubPage: {
+            currentWeekPicks: 'currentWeekPicks',
+            memberScoreboard: 'memberScoreboard'
+        }
     };
 
     vm.contentPage = {
-        default: vm.pageNames.currentWeekPicks,
-        current: vm.pageNames.currentWeekPicks
+        default: vm.pageNames.main.selectedLeague,
+        current: '',
+        selectedLeagueSubPage: ''
     };
 
     // TODO maybe make this a league setting with default set to no
@@ -115,9 +123,11 @@ angular.module('upickem').controller('home', function ($scope, $http, $window) {
 
     // BEGIN LEAGUE SELECTED
     $scope.selectLeague = function (league) {
+        leagueService.setSelectedLeague(league);
         $scope.selectedLeague = league;
-        $scope.newLeagueClicked = false;
         $scope.updateGameDataOnSelectedWeekChange();
+        vm.contentPage.current = vm.pageNames.main.selectedLeague;
+        vm.contentPage.selectedLeagueSubPage = vm.pageNames.selectedLeagueSubPage.currentWeekPicks;
     };
 
     $scope.generateFullWeekSelectionList = function (includePreseason = false) {
@@ -170,21 +180,26 @@ angular.module('upickem').controller('home', function ($scope, $http, $window) {
         $scope.initializeWeekSelectedToCurrentWeek();
     };
 
+    // TODO BUG - This gets called before $scope.selectedWeek is initialized at page startup
     $scope.updateGameDataOnSelectedWeekChange = function () {
-        let url = "/api/games?year=" + NFL_SEASON_YEAR +
-            "&week=" + $scope.selectedWeek.number +
-            "&seasonType=" + $scope.selectedWeek.seasonType;
-        $http.get(url).then(function (response) {
-            if (response.data.success) {
-                $scope.selectedGames = response.data.message;
-                $scope.selectedGames.forEach((game, i) => {
-                    let dateFormatted = moment(game.dateAndTime).format("ddd M/D h:mm A");
-                    $scope.selectedGames[i].dateObj = new Date(game.dateAndTime);
-                    $scope.selectedGames[i].dateFormatted = (dateFormatted);
-                });
-                $scope.createModelForSelectedGamesRadioButtons();
-            }
-        });
+        if (!$scope.selectedWeek) {
+
+        } else {
+            let url = "/api/games?year=" + NFL_SEASON_YEAR +
+                "&week=" + $scope.selectedWeek.number +
+                "&seasonType=" + $scope.selectedWeek.seasonType;
+            $http.get(url).then(function (response) {
+                if (response.data.success) {
+                    $scope.selectedGames = response.data.message;
+                    $scope.selectedGames.forEach((game, i) => {
+                        let dateFormatted = moment(game.dateAndTime).format("ddd M/D h:mm A");
+                        $scope.selectedGames[i].dateObj = new Date(game.dateAndTime);
+                        $scope.selectedGames[i].dateFormatted = (dateFormatted);
+                    });
+                    $scope.createModelForSelectedGamesRadioButtons();
+                }
+            });
+        }
     };
 
     $scope.initializeWeekSelectedToCurrentWeek = function () {
@@ -240,7 +255,8 @@ angular.module('upickem').controller('home', function ($scope, $http, $window) {
 
     // BEGIN CREATING LEAGUES
     $scope.showNewLeagueArea = function () {
-        vm.contentPage.default = vm.pageNames.newLeague;
+        vm.contentPage.current = vm.pageNames.main.newLeague;
+        vm.contentPage.selectedLeagueSubPage = null;
         $scope.selectedLeague = null;
     };
 
@@ -283,6 +299,7 @@ angular.module('upickem').controller('home', function ($scope, $http, $window) {
 
     $scope.cancelCreateNewLeague = function () {
         $scope.selectedUsersInNewLeague = [];
+        vm.refresh();
     };
     // END CREATING LEAGUES --------------------------------------
 
@@ -294,18 +311,23 @@ angular.module('upickem').controller('home', function ($scope, $http, $window) {
         $scope.success.display = false;
     };
 
-    (function() {
+    vm.refresh = function() {
         getUserLeagueData().then(function(response) {
             $scope.getMaxMembersInLeague();
             $scope.getCurrentWeekAndGames();
             $scope.userLeagues = response.data.message;
-            if ($scope.userLeagues.length > 0) {
-                $scope.selectLeague($scope.userLeagues[0]);
-                vm.contentPage.current = pageNames.currentWeekPicks;
-            } else {
-                vm.contentPage = pageNames.newLeague;
+            if (!$scope.userLeagues.length > 0) {
+                vm.contentPage = vm.pageNames.main.newLeague;
             }
         })
-    })();
+    };
+
+    vm.refresh();
+
+    // NAVIGATION
+
+    vm.openSelectedLeagueSubPage = function(pageName) {
+        vm.contentPage.selectedLeagueSubPage = pageName;
+    };
 
 });

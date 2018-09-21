@@ -1,4 +1,4 @@
-package com.upickem.service;
+package com.upickem.service.Game;
 
 import com.upickem.model.Game;
 import com.upickem.model.Quarter;
@@ -26,7 +26,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Year;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,18 @@
 <div ng-controller="memberScoreboardController as scoreboard">
-    <p>{{scoreboard.vm.helloWorld}}</p>
+
+    <h1>Scoreboard</h1>
+
+    <p ng-model="scoreboard.usersInLeague">{{scoreboard.usersInLeague}}</p>
+    <p ng-model="scoreboard.pointsInLeague">{{scoreboard.pointsInLeague}}</p>
+    {{scoreboard.scoreboardData}}
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
 </div>
-<script src="js/memberScoreboardController.js"></script>
