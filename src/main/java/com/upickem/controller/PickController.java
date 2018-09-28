@@ -107,7 +107,7 @@ public class PickController {
             }
         }
 
-        return ResponseEntity.ok(new ApiResponse<>(true, pickRepository.save(picks).size()
+        return ResponseEntity.ok(new ApiResponse<>(true, pickRepository.saveAll(picks).size()
                 + " records saved"));
     }
 }

@@ -18,7 +18,6 @@ app.controller('login', function($scope, $http, $window) {
                     $window.location.href = 'home.html';
                 } else {
                     // TODO intercept the 401 received to display error messages
-                    console.log('fired');
                     $scope.badUsernamePasswordEntered = true;
                 }
             }

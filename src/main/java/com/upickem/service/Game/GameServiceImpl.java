@@ -55,7 +55,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<Game> saveGames(List<Game> games) {
-        return gameRespository.save(games);
+        return gameRespository.saveAll(games);
     }
 
     @Override

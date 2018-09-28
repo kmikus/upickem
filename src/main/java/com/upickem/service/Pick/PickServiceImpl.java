@@ -48,7 +48,7 @@ public class PickServiceImpl implements PickService {
                 pick.setPointActual(0L);
             }
         });
-        return pickRepository.save(picks);
+        return pickRepository.saveAll(picks);
     }
 
     private List<Pick> findPicksReadyToBeScored() {

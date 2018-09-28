@@ -317,7 +317,7 @@ angular.module('upickem').controller('homeController', function ($scope, $http, 
             $scope.getCurrentWeekAndGames();
             $scope.userLeagues = response.data.message;
             if (!$scope.userLeagues.length > 0) {
-                vm.contentPage = vm.pageNames.main.newLeague;
+                vm.contentPage.current = vm.pageNames.main.newLeague;
             }
         })
     };
