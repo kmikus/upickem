@@ -9,5 +9,4 @@ angular.module('upickem').controller('memberScoreboardController',
                 vm.pointsData = response.message;
             });
 
-
         }]);

@@ -15,16 +15,12 @@ import java.util.Optional;
 
 public interface PickRepository extends JpaRepository<Pick, Long> {
 
-    public Optional<Pick> findByUserAndLeagueAndGame(User user, League league, Game game);
+    Optional<Pick> findByUserAndLeagueAndGame(User user, League league, Game game);
 
-    public List<Pick> findByUserAndLeagueAndGameYearAndGameWeek(User user, League league, Year year, Long week);
+    List<Pick> findByUserAndLeagueAndGameYearAndGameWeek(User user, League league, Year year, Long week);
 
     @Query("select p from Pick p where p.pointActual is null and p.game.winner is not null")
-    public List<Pick> findPicksReadyToBeScored();
+    List<Pick> findPicksReadyToBeScored();
 
-    @Query("select new com.upickem.repository.DTO.GetPointsOfMembersInLeagueByYearDto(lm.user, sum(p.pointActual))" +
-            " from Pick p left outer join LeagueMember lm on lm.user = p.user where lm.league = :league and p.game.year = :year"+
-            " group by p.user")
-    public List<GetPointsOfMembersInLeagueByYearDto> getPointsOfMembersInLeagueByYear(
-            @Param("league") League league, @Param("year") Year year);
+    List<Pick> findAllByLeagueAndGameYear(League league, Year year);
 }

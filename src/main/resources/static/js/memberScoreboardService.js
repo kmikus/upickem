@@ -1,7 +1,7 @@
 angular.module('upickem').service('memberScoreboardService', function($http, $q) {
 
     this.getMembersInLeague = function(leagueId) {
-        let promise = $http.get("/api/leagues/"+leagueId+"/users").then(response => {
+        let promise = $http.get("/api/leagues/"+leagueId+"/users").success(response => {
             return $q.resolve(response.data);
         });
         return promise;
@@ -13,4 +13,5 @@ angular.module('upickem').service('memberScoreboardService', function($http, $q)
         });
         return promise;
     }
+
 });

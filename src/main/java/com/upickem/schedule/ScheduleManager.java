@@ -92,10 +92,10 @@ public class ScheduleManager {
             }
             if (datesToCheck.get(datesToCheck.size() - 1).isBefore(LocalDate.now())) {
                 // TODO switch to case statement
-                if (currentWeek == nflPreseasonEnd) {
+                if (currentWeek.equals(nflPreseasonEnd) && currentSeasonType.equals(SeasonType.PRE)) {
                     currentSeasonType = SeasonType.REG;
                     currentWeek = 1L;
-                } else if (currentWeek == nflRegseasonEnd) {
+                } else if (currentWeek.equals(nflRegseasonEnd)) {
                     currentSeasonType = SeasonType.POST;
                     currentWeek++;
                 } else if (currentWeek == nflRegseasonEnd - 1) {
