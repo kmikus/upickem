@@ -12,5 +12,4 @@ public interface PickService {
 
     List<Pick> scoreReadyUnscoredPicks();
 
-    List<?> getTotalPointsForYearInLeague(League league, Year year);
 }

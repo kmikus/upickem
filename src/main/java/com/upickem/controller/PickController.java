@@ -44,16 +44,8 @@ public class PickController {
 
     @PostMapping("/runScoring")
     public ResponseEntity<?> runScoring() {
-        pickService.scoreReadyUnscoredPicks();
-        return ResponseEntity.ok(new ApiResponse<>(true, "Picks scored"));
-    }
-
-    @RequestMapping("/pointsByYear")
-    public ResponseEntity<?> getTotalPointsForYearInLeague(@RequestParam Long leagueId,
-                                                           @RequestParam Long year) {
-        return ResponseEntity.ok(new ApiResponse<>(true, pickService.getTotalPointsForYearInLeague(
-                leagueRepository.findById(leagueId).get(), Year.of(year.intValue())
-        )));
+        List<Pick> picks = pickService.scoreReadyUnscoredPicks();
+        return ResponseEntity.ok(new ApiResponse<>(true, String.format("%s picks scored", picks.size())));
     }
 
     // TODO add season type
