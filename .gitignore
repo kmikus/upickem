@@ -92,6 +92,8 @@ local.properties
 .scala_dependencies
 .worksheet
 
-.idea/
+.idea/**
+
+upickem.iml
 
 export.sql
