@@ -94,6 +94,10 @@ local.properties
 
 .idea/**
 
-upickem.iml
+*.iml
+
+target/
+
+.idea/
 
 export.sql

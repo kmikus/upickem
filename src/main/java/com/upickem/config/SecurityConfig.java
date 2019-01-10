@@ -83,14 +83,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 			.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                 .permitAll()
-            .antMatchers(HttpMethod.GET, "/api/leagues/**", "/api/users/**")
-                .permitAll()
             .anyRequest()
                 .authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login.html")
-                .successForwardUrl("/home.html");
+                .loginPage("/login")
+                .successForwardUrl("/home");
 
         //TODO for testing only DELETE;
 		http.csrf().disable().authorizeRequests().anyRequest().permitAll().and()

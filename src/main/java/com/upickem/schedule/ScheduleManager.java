@@ -30,6 +30,7 @@ public class ScheduleManager {
     @Autowired
     PickService pickService;
 
+    static private Year nflSeasonYear = LocalDateTime.now().getMonthValue() < 4 ? Year.of(Year.now().getValue()-1) : Year.now();
     static private Long currentWeek = 1L;
     static private SeasonType currentSeasonType = SeasonType.PRE;
 
@@ -59,11 +60,11 @@ public class ScheduleManager {
 
         try {
             gameService.saveGames(gameService.pullGameDataFromRemoteServer(
-                    Year.now(), currentWeek, currentSeasonType)
+                    nflSeasonYear, currentWeek, currentSeasonType)
             );
         } catch (Exception e) {
             log.error("Could not save game data for " + currentSeasonType +
-                    " " + Year.now() + " week " + currentWeek, e);
+                    " " + nflSeasonYear + " week " + currentWeek, e);
         }
 
         try {
@@ -85,7 +86,7 @@ public class ScheduleManager {
             List<LocalDate> datesToCheck;
             try {
                 datesToCheck = gameService.getDatesOfGamesForWeekFromRemote(
-                        Year.now(), currentWeek, currentSeasonType);
+                        nflSeasonYear, currentWeek, currentSeasonType);
             } catch (Exception e) {
                 log.error("Could not update week to current week", e);
                 return;
@@ -113,26 +114,27 @@ public class ScheduleManager {
         log.info("Current week is: " + currentWeek + " and current season type is: " + currentSeasonType);
     }
 
+    @EventListener(ApplicationReadyEvent.class)
     @Scheduled(cron = "0 0 2 * 5-7 2")
     public void saveAnnualSchedule() {
         log.info("Fired save annual schedule at " + LocalDateTime.now());
         int gamesByYear = 0;
 
         try {
-            gamesByYear = gameService.findGamesByYear(Year.now()).size();
+            gamesByYear = gameService.findGamesByYear(nflSeasonYear).size();
         } catch (Exception e) {
-            log.error("Could not fetch the games for " + Year.now(), e);
+            log.error("Could not fetch the games for " + nflSeasonYear, e);
         }
 
         if (gamesByYear == 0) {
-            log.info("Saving the schedule for " + Year.now());
+            log.info("Saving the schedule for " + nflSeasonYear);
             try {
-                gameService.saveScheduleForYear(Year.now());
+                gameService.saveScheduleForYear(nflSeasonYear);
             } catch (Exception e) {
                 log.error("Could not save schedule for the year", e);
             }
         } else {
-            log.info("Games already exist for " + Year.now());
+            log.info("Games already exist for " + nflSeasonYear);
         }
     }
 
