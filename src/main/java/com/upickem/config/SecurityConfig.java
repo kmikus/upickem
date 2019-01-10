@@ -12,6 +12,7 @@ import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -77,11 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.svg",
 						"/**/*.jpg",
 						"/**/*.css",
-						"/**/*.js")
-                .permitAll()
-			.antMatchers("/api/auth/**", "/api/auth/signin")
-				.permitAll()
-			.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
+						"/**/*.js",
+						"/api/auth/**")
                 .permitAll()
             .anyRequest()
                 .authenticated()
@@ -89,10 +87,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/login")
                 .successForwardUrl("/home");
-
-        //TODO for testing only DELETE;
-		http.csrf().disable().authorizeRequests().anyRequest().permitAll().and()
-                .headers().frameOptions().disable();
 
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

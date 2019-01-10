@@ -1,3 +1,4 @@
+
 **/conn
 **/helpers
 **/backups
@@ -91,13 +92,5 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
-
-.idea/**
-
-*.iml
-
-target/
-
-.idea/
 
 export.sql

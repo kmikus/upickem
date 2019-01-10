@@ -31,7 +31,7 @@ public class GameController {
     @Autowired
     GameRespository gameRespository;
 
-    @RequestMapping
+    @GetMapping
     public ResponseEntity<?> queryGamesWeekYearAndSeasonType(
             @RequestParam("week") Long week,
             @RequestParam(value="year") Long year,

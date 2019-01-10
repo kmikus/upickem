@@ -49,7 +49,7 @@ public class PickController {
     }
 
     // TODO add season type
-    @RequestMapping
+    @GetMapping
     public ResponseEntity<?> getPicksForLoggedInUserByLeague(@RequestParam Long leagueId,
                                                              @RequestParam Long year,
                                                              @RequestParam Long week) {
