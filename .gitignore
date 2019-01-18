@@ -94,3 +94,6 @@ local.properties
 .worksheet
 
 export.sql
+
+*.iml
+.idea/**

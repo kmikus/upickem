@@ -11,9 +11,11 @@ import com.upickem.payload.SignUpRequest;
 import com.upickem.repository.RoleRepository;
 import com.upickem.repository.UserRepository;
 import com.upickem.security.JwtTokenProvider;
+import com.upickem.util.PasswordValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,10 +23,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -79,6 +78,11 @@ public class AuthController {
                     HttpStatus.BAD_REQUEST);
         }
 
+        if (!PasswordValidator.validate(signUpRequest.getPassword())) {
+            return new ResponseEntity<>(new ApiResponse<>(false, "Password does not meet strength requirements"),
+                    HttpStatus.BAD_REQUEST);
+        }
+
         //Creating the user's account
         User user = new User(signUpRequest.getFirstName(), signUpRequest.getLastName(),
                 signUpRequest.getUsername(), signUpRequest.getEmail(),
@@ -98,5 +102,11 @@ public class AuthController {
                 .buildAndExpand(result.getUsername()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse<>(true, "User registered successfully"));
+    }
+
+    @GetMapping("/passwordValidatorRegex")
+    @ResponseBody
+    public String getPasswordValidatorRegex() {
+        return PasswordValidator.REGEX;
     }
 }
