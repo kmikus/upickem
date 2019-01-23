@@ -62,6 +62,7 @@ public class GameServiceImpl implements GameService {
     public List<LocalDate> getDatesOfGamesForWeekFromRemote(Year seasonYear, Long nflWeek, SeasonType seasonType) {
         List<LocalDate> dates = new ArrayList<>();
         String url = constructUrl(seasonYear, nflWeek, seasonType);
+        log.info("Contacting NFL game server at " + url);
         Document doc;
         try {
             doc = buildDocumentFromRemote(url);

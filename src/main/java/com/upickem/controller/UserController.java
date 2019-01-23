@@ -13,7 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +59,8 @@ public class UserController {
         return ResponseEntity.ok(new ApiResponse<>(true, leagues));
     }
 
-    @PostMapping("/getUserByEmailOrUsername")
-    public ResponseEntity<?> getUser(@RequestBody String emailOrUsername) {
+    @GetMapping("/getUserByEmailOrUsername")
+    public ResponseEntity<?> getUser(@RequestParam String emailOrUsername) {
 
         Optional<User> user = userRepository.findByUsernameOrEmail(emailOrUsername, emailOrUsername);
         if (!user.isPresent()) {

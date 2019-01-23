@@ -83,6 +83,7 @@ public class ScheduleManager {
         log.info("Fired week update at " + LocalDateTime.now());
         boolean isDateFromServerAhead = true;
         do {
+
             List<LocalDate> datesToCheck;
             try {
                 datesToCheck = gameService.getDatesOfGamesForWeekFromRemote(
@@ -91,6 +92,12 @@ public class ScheduleManager {
                 log.error("Could not update week to current week", e);
                 return;
             }
+
+            if (datesToCheck.isEmpty()) {
+                currentWeek++;
+                continue;
+            }
+
             if (datesToCheck.get(datesToCheck.size() - 1).isBefore(LocalDate.now())) {
                 // TODO switch to case statement
                 if (currentWeek.equals(nflPreseasonEnd) && currentSeasonType.equals(SeasonType.PRE)) {
@@ -101,8 +108,10 @@ public class ScheduleManager {
                     currentWeek++;
                 } else if (currentWeek == nflRegseasonEnd - 1) {
                     currentWeek = nflRegseasonEnd;
-                } else {
+                } else if (currentWeek <= 22) {
                     currentWeek++;
+                } else {
+                    currentWeek = 22L;
                 }
                 log.info("week? : " + currentWeek);
             } else {
