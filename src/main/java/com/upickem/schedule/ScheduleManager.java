@@ -84,6 +84,10 @@ public class ScheduleManager {
         boolean isDateFromServerAhead = true;
         do {
 
+            if (currentWeek == 22L) {
+                break;
+            }
+
             List<LocalDate> datesToCheck;
             try {
                 datesToCheck = gameService.getDatesOfGamesForWeekFromRemote(

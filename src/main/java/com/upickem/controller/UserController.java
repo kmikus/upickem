@@ -72,4 +72,9 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getLoggedInUser")
+    public String getLoggedInUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
 }
